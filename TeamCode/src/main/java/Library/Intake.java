@@ -29,6 +29,10 @@ public class Intake {
         motorIntake.setPower(-1);
     }
 
+    public void intakeStop(){
+        motorIntake.setPower(0);
+    }
+
     public void flick(){
         srvFlicker.setPosition(.4); //placeholder positions - need to change these
         srvFlicker.setPosition(.1);

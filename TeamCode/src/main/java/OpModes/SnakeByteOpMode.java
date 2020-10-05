@@ -15,6 +15,8 @@ public abstract class SnakeByteOpMode extends OpMode{
     Servo srvFlicker;
     DcMotor motorIntake;
 
+    DcMotor motorShooter;
+
     public void init(){
 
         motorFL = hardwareMap.dcMotor.get("motorFL");
@@ -24,6 +26,8 @@ public abstract class SnakeByteOpMode extends OpMode{
 
         srvFlicker = hardwareMap.servo.get("srvFlicker");
         motorIntake = hardwareMap.dcMotor.get("motorIntake");
+
+        motorShooter = hardwareMap.dcMotor.get("motorShooter");
 
         motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -40,6 +44,9 @@ public abstract class SnakeByteOpMode extends OpMode{
 
         motorIntake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+
+        motorShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         telemetry.addData("init ", "completed");
         telemetry.update();
@@ -85,9 +92,25 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorIntake.setPower(-1);
     }
 
+    public void intakeStop(){
+        motorIntake.setPower(0);
+    }
+
     public void flick(){
         srvFlicker.setPosition(.4); //placeholder positions - need to change these
         srvFlicker.setPosition(.1);
+    }
+
+    public void shootOut(){
+        motorShooter.setPower(1);
+    }
+
+    public void spinIn(){
+        motorShooter.setPower(-.4);
+    }
+
+    public void stopShooter(){
+        motorShooter.setPower(0);
     }
 
 
