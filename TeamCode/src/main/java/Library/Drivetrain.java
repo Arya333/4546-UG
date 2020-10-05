@@ -28,7 +28,7 @@ public class Drivetrain {
         motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        countsPerInch = EncodersPerInch(560, 0.5, (100/25.4)); //change parameters
+        countsPerInch = EncodersPerInch(560, 0.5, (75/25.4)); //change parameters
         time = new ElapsedTime();
         sensor = new Sensors(opMode);
 
