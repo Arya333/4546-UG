@@ -12,13 +12,13 @@ public class Intake {
     public Servo srvFlicker;
 
     LinearOpMode opMode;
-    ElapsedTime times;
+    ElapsedTime time;
 
     public Intake(LinearOpMode opMode) throws InterruptedException{
         this.opMode = opMode;
         motorIntake = this.opMode.hardwareMap.dcMotor.get("motorIntake");
         srvFlicker = this.opMode.hardwareMap.servo.get("srvFlicker");
-        times = new ElapsedTime();
+        time = new ElapsedTime();
     }
 
     public void intakeIn(){
@@ -36,5 +36,13 @@ public class Intake {
     public void flick(){
         srvFlicker.setPosition(.4); //placeholder positions - need to change these
         srvFlicker.setPosition(.1);
+    }
+
+    public void initPos(){
+        srvFlicker.setPosition(.1); //placeholder number
+    }
+
+    public void flickPos(){
+        srvFlicker.setPosition(.4); //placeholder number
     }
 }

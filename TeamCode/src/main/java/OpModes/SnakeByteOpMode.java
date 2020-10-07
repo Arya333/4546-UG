@@ -17,6 +17,9 @@ public abstract class SnakeByteOpMode extends OpMode{
 
     DcMotor motorShooter;
 
+    Servo srvClaw;
+    DcMotor motorPivot;
+
     public void init(){
 
         motorFL = hardwareMap.dcMotor.get("motorFL");
@@ -28,6 +31,9 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorIntake = hardwareMap.dcMotor.get("motorIntake");
 
         motorShooter = hardwareMap.dcMotor.get("motorShooter");
+
+        srvClaw = hardwareMap.servo.get("srvClaw");
+        motorPivot = hardwareMap.dcMotor.get("motorPivot");
 
         motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -47,6 +53,10 @@ public abstract class SnakeByteOpMode extends OpMode{
 
         motorShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
+        motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motorPivot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         telemetry.addData("init ", "completed");
         telemetry.update();
@@ -113,5 +123,18 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorShooter.setPower(0);
     }
 
+    public void resetPivotEncoders(){
+        motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+    }
+
+    public void grab(){
+        srvClaw.setPosition(.9); //placeholder number
+    }
+
+    public void release(){
+        srvClaw.setPosition(.1); //placeholder number
+    }
+
+    // Need to add code for the wobble goal pivot motor later
 
 }
