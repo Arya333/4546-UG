@@ -22,10 +22,10 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             k = 1.0;
         }
         if (flip){
-            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .6 * k);
+            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x * k);
         }
         else{
-            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .6 * k);
+            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * k);
         }
 
         if (gamepad1.right_bumper){
