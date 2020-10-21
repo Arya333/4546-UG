@@ -1,9 +1,17 @@
 package OpModes;
 
+import com.qualcomm.hardware.bosch.BNO055IMU;
+import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
+
+import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
+import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+
+import Library.Sensors;
 
 public abstract class SnakeByteOpMode extends OpMode{
 
@@ -20,12 +28,27 @@ public abstract class SnakeByteOpMode extends OpMode{
     Servo srvClaw;
     DcMotor motorPivot;*/
 
+    public BNO055IMU gyro;
+    Orientation angles;
+    Acceleration gravity;
+    BNO055IMU.Parameters parameters;
+
     public void init(){
 
         motorFL = hardwareMap.dcMotor.get("motorFL");
         motorFR = hardwareMap.dcMotor.get("motorFR");
         motorBL = hardwareMap.dcMotor.get("motorBL");
         motorBR = hardwareMap.dcMotor.get("motorBR");
+
+        BNO055IMU.Parameters parameters = new BNO055IMU.Parameters();
+        parameters.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+        parameters.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters.calibrationDataFile = "AdafruitIMUCalibration.json";
+        parameters.loggingEnabled = true;
+        parameters.loggingTag = "IMU";
+        parameters.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        gyro = this.hardwareMap.get(BNO055IMU.class, "imu");
+        gyro.initialize(parameters);
 
         /*srvFlicker = hardwareMap.servo.get("srvFlicker");
         motorIntake = hardwareMap.dcMotor.get("motorIntake");
@@ -35,7 +58,8 @@ public abstract class SnakeByteOpMode extends OpMode{
         srvClaw = hardwareMap.servo.get("srvClaw");
         motorPivot = hardwareMap.dcMotor.get("motorPivot");*/
 
-        motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorFL.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorBL.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
 
         motorFL.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -60,6 +84,18 @@ public abstract class SnakeByteOpMode extends OpMode{
 
         telemetry.addData("init ", "completed");
         telemetry.update();
+    }
+
+    public double getGyroYaw() {
+        updateValues();
+        double yaw = angles.firstAngle * -1;
+        if(angles.firstAngle < -180)
+            yaw -= 360;
+        return yaw;
+    }
+
+    public void updateValues() {
+        angles = gyro.getAngularOrientation();
     }
 
     public void startMotors(double left, double right){
@@ -88,10 +124,10 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void driveTrainPower(double forward, double strafe, double rotate){
-        motorFL.setPower(WeightAvg(forward,-strafe,-rotate));
-        motorFR.setPower(WeightAvg(forward,strafe,rotate));
-        motorBL.setPower(WeightAvg(forward,strafe,-rotate));
-        motorBR.setPower(WeightAvg(forward,-strafe,rotate));
+        motorFL.setPower(WeightAvg(forward,strafe,-rotate));
+        motorFR.setPower(WeightAvg(forward,-strafe,rotate));
+        motorBL.setPower(WeightAvg(forward,-strafe,-rotate));
+        motorBR.setPower(WeightAvg(forward,strafe,rotate));
     }
 
     /*public void intakeIn(){

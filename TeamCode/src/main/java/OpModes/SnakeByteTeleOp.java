@@ -35,7 +35,8 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             flip = false;
         }
 
-
+        telemetry.addData("Angle: ", getGyroYaw());
+        telemetry.update();
         // ----------------------------------------------- Intake -----------------------------------------------
         /*if (gamepad1.x){
             intakeIn();

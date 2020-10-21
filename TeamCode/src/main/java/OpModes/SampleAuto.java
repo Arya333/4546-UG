@@ -29,7 +29,10 @@ public class SampleAuto extends LinearOpMode{
         waitForStart();
 
         // ----------------------------------------------- Auto -----------------------------------------------
-        drivetrain.moveTime(3000,.5);
-
+        sleep(1000);
+        drivetrain.turn(90,.35);
+        sleep(1500);
+        drivetrain.turn(90,.2);
+        telemetry.update();
     }
 }

@@ -25,10 +25,11 @@ public class Drivetrain {
         motorBL = this.opMode.hardwareMap.dcMotor.get("motorBL");
         motorBR = this.opMode.hardwareMap.dcMotor.get("motorBR");
 
-        //motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
-        //motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorFL.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorBL.setDirection(DcMotorSimple.Direction.REVERSE);
+        motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        countsPerInch = EncodersPerInch(560, 0.5, (75/25.4)); //change parameters
+        countsPerInch = EncodersPerInch(560, .55, (75/25.4)); //change parameters
         time = new ElapsedTime();
         sensor = new Sensors(opMode);
 
@@ -110,13 +111,13 @@ public class Drivetrain {
 
     public void moveGyro(double power, double inches, double heading){
         resetEncoders();
-        double constant = .6; //to reduce power of one side of drivetrain
+        double constant = .3; //to reduce power of one side of drivetrain
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch && opMode.opModeIsActive()){ //while our avg encoder value is less than desired number of encoder ticks
-                if (sensor.getTrueDiff(heading) > 1){ //if our robot is off its heading to the left (needs to turn right)
+                if (sensor.getTrueDiff(heading) > 2){ //if our robot is off its heading to the left (needs to turn right)
                     startMotors(power, power * constant); //apply less power to right side so we turn right to maintain our heading
                 }
-                else if (sensor.getTrueDiff(heading) < -1){ //if our robot is off its heading to the right (needs to turn left)
+                else if (sensor.getTrueDiff(heading) < -2){ //if our robot is off its heading to the right (needs to turn left)
                     startMotors(power * constant, power); //apply less power to left side so we turn left to maintain our heading
                 }
                 else{
@@ -126,10 +127,10 @@ public class Drivetrain {
         }
         else{
             while (getEncoderAvg() < inches * countsPerInch && opMode.opModeIsActive()){ //everything is swapped when we move backwards
-                if (sensor.getTrueDiff(heading) > 1){
+                if (sensor.getTrueDiff(heading) > 2){
                     startMotors(power * constant, power);
                 }
-                else if (sensor.getTrueDiff(heading) < -1){
+                else if (sensor.getTrueDiff(heading) < -2){
                     startMotors(power, power * constant);
                 }
                 else{
@@ -137,6 +138,31 @@ public class Drivetrain {
                 }
             }
         }
+    }
+
+    public void turn(double angle, double p) throws InterruptedException{
+        double kP = p;
+        final double startPos = sensor.getGyroYaw();
+        final double angleDiff = angle - startPos;
+        double deltaAngle = sensor.getTrueDiff(angle);
+        double changePID = 0;
+        while(Math.abs(deltaAngle) > .3){
+            deltaAngle = sensor.getTrueDiff(angle);
+            changePID = ((deltaAngle/Math.abs(angleDiff)) * kP);
+            if (changePID < 0){
+                startMotors(changePID - .075 , -changePID + .075);
+            }
+            else{
+                startMotors(changePID + .075, -changePID - .075);
+
+            }
+            opMode.telemetry.addData("Current position", sensor.getGyroYaw());
+            opMode.telemetry.addData("Current Difference",deltaAngle);
+            opMode.telemetry.addData("changePID", changePID);
+            opMode.telemetry.addData("angleDiff: ", angleDiff);
+            opMode.telemetry.update();
+        }
+        stopMotors();
     }
 
 
