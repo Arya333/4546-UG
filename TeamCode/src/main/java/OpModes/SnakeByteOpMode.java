@@ -12,13 +12,13 @@ public abstract class SnakeByteOpMode extends OpMode{
     DcMotor motorBL;
     DcMotor motorBR;
 
-    Servo srvFlicker;
+    /*Servo srvFlicker;
     DcMotor motorIntake;
 
     DcMotor motorShooter;
 
     Servo srvClaw;
-    DcMotor motorPivot;
+    DcMotor motorPivot;*/
 
     public void init(){
 
@@ -27,13 +27,13 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorBL = hardwareMap.dcMotor.get("motorBL");
         motorBR = hardwareMap.dcMotor.get("motorBR");
 
-        srvFlicker = hardwareMap.servo.get("srvFlicker");
+        /*srvFlicker = hardwareMap.servo.get("srvFlicker");
         motorIntake = hardwareMap.dcMotor.get("motorIntake");
 
         motorShooter = hardwareMap.dcMotor.get("motorShooter");
 
         srvClaw = hardwareMap.servo.get("srvClaw");
-        motorPivot = hardwareMap.dcMotor.get("motorPivot");
+        motorPivot = hardwareMap.dcMotor.get("motorPivot");*/
 
         motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -48,7 +48,7 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorBL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        motorIntake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        /*motorIntake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
         motorShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -56,7 +56,7 @@ public abstract class SnakeByteOpMode extends OpMode{
 
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        motorPivot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        motorPivot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);*/
 
         telemetry.addData("init ", "completed");
         telemetry.update();
@@ -94,7 +94,7 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorBR.setPower(WeightAvg(forward,-strafe,rotate));
     }
 
-    public void intakeIn(){
+    /*public void intakeIn(){
         motorIntake.setPower(1);
     }
 
@@ -133,7 +133,7 @@ public abstract class SnakeByteOpMode extends OpMode{
 
     public void release(){
         srvClaw.setPosition(.1); //placeholder number
-    }
+    }*/
 
     // Need to add code for the wobble goal pivot motor later
 

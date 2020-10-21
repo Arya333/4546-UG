@@ -23,13 +23,13 @@ public class SampleAuto extends LinearOpMode{
 
         drivetrain = new Drivetrain(this);
         sensors = new Sensors(this);
-        intake = new Intake(this);
-        shooter = new Shooter(this);
+        //intake = new Intake(this);
+        //shooter = new Shooter(this);
 
         waitForStart();
 
         // ----------------------------------------------- Auto -----------------------------------------------
-
+        drivetrain.moveTime(3000,.5);
 
     }
 }

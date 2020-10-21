@@ -11,6 +11,9 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
     public void loop(){
 
         // ----------------------------------------------- Drivetrain -----------------------------------------------
+
+        // Implement macro to turn 90 degrees with one button press for turning to shoot each time <----- DO THIS
+
         double k = 1.0;
         if(gamepad1.left_trigger > .6){
             k = 0.5;
@@ -34,7 +37,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
 
         // ----------------------------------------------- Intake -----------------------------------------------
-        if (gamepad1.x){
+        /*if (gamepad1.x){
             intakeIn();
         }
         else if (gamepad1.b){
@@ -45,11 +48,11 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
         if (gamepad2.x){
             flick();
-        }
+        }*/
 
 
         // ----------------------------------------------- Shooter -----------------------------------------------
-        if (gamepad2.b){
+        /*if (gamepad2.b){
             shootingState = 0;
         }
         else if (gamepad2.y){
@@ -67,7 +70,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
         else{
             stopShooter();
-        }
+        }*/
 
         // ----------------------------------------------- Wobble Goal -----------------------------------------------
 

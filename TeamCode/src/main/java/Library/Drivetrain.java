@@ -25,8 +25,8 @@ public class Drivetrain {
         motorBL = this.opMode.hardwareMap.dcMotor.get("motorBL");
         motorBR = this.opMode.hardwareMap.dcMotor.get("motorBR");
 
-        motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
-        motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
+        //motorFR.setDirection(DcMotorSimple.Direction.REVERSE);
+        //motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
 
         countsPerInch = EncodersPerInch(560, 0.5, (75/25.4)); //change parameters
         time = new ElapsedTime();
