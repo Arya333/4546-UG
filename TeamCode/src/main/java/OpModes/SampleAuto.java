@@ -30,9 +30,9 @@ public class SampleAuto extends LinearOpMode{
 
         // ----------------------------------------------- Auto -----------------------------------------------
         sleep(1000);
-        drivetrain.turn(90,.35);
+        drivetrain.turnP(90,.35);
         sleep(1500);
-        drivetrain.turn(90,.2);
+        drivetrain.turnP(90,.2);
         telemetry.update();
     }
 }
