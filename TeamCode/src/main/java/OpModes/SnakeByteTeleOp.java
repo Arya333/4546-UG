@@ -6,6 +6,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 public class SnakeByteTeleOp extends SnakeByteOpMode{
 
     boolean flip = false;
+    int intakeState = 0; // 0 = stop, 1 = in, 2 = out
     int shootingState = 0; // 0 = stop, 1 = shoot, 2 = inwards
 
     public void loop(){
@@ -22,13 +23,12 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             k = 1.0;
         }
 
-        if (Math.abs(gamepad1.left_stick_y) > .1 || Math.abs(gamepad1.left_stick_x) > .1 || Math.abs(gamepad1.right_stick_x) > .1){
-            if (flip){
-                driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x * k);
-            }
-            else{
-                driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * k);
-            }
+
+        if (flip && (Math.abs(gamepad1.left_stick_y) > .1 || Math.abs(gamepad1.left_stick_x) > .1 || Math.abs(gamepad1.right_stick_x) > .1)){
+            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x* .8 * k);
+        }
+        else{
+            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .8 * k);
         }
 
         if (gamepad1.right_bumper){
@@ -41,16 +41,26 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         telemetry.addData("Angle: ", getGyroYaw());
         telemetry.update();
         // ----------------------------------------------- Intake -----------------------------------------------
-        /*if (gamepad1.x){
-            intakeIn();
+        if (gamepad1.x){
+            intakeState = 1;
         }
         else if (gamepad1.b){
+            intakeState = 2;
+        }
+        else if (gamepad1.a){
+            intakeState = 0;
+        }
+
+        if (intakeState == 1){
+            intakeIn();
+        }
+        else if (intakeState == 2){
             intakeOut();
         }
         else{
             intakeStop();
         }
-        if (gamepad2.x){
+        /*if (gamepad2.x){
             flick();
         }*/
 

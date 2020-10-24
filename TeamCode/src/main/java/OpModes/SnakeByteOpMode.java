@@ -20,10 +20,10 @@ public abstract class SnakeByteOpMode extends OpMode{
     DcMotor motorBL;
     DcMotor motorBR;
 
-    /*Servo srvFlicker;
+    /*Servo srvFlicker;*/
     DcMotor motorIntake;
 
-    DcMotor motorShooter;
+    /*DcMotor motorShooter;
 
     Servo srvClaw;
     DcMotor motorPivot;*/
@@ -50,10 +50,10 @@ public abstract class SnakeByteOpMode extends OpMode{
         gyro = this.hardwareMap.get(BNO055IMU.class, "imu");
         gyro.initialize(parameters);
 
-        /*srvFlicker = hardwareMap.servo.get("srvFlicker");
+        /*srvFlicker = hardwareMap.servo.get("srvFlicker");*/
         motorIntake = hardwareMap.dcMotor.get("motorIntake");
 
-        motorShooter = hardwareMap.dcMotor.get("motorShooter");
+        /*motorShooter = hardwareMap.dcMotor.get("motorShooter");
 
         srvClaw = hardwareMap.servo.get("srvClaw");
         motorPivot = hardwareMap.dcMotor.get("motorPivot");*/
@@ -72,10 +72,10 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorBL.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
         motorBR.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        /*motorIntake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorIntake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        motorShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        /*motorShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
 
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
@@ -130,7 +130,7 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorBR.setPower(WeightAvg(forward,strafe,rotate));
     }
 
-    /*public void intakeIn(){
+    public void intakeIn(){
         motorIntake.setPower(1);
     }
 
@@ -142,7 +142,7 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorIntake.setPower(0);
     }
 
-    public void flick(){
+    /*public void flick(){
         srvFlicker.setPosition(.4); //placeholder positions - need to change these
         srvFlicker.setPosition(.1);
     }
