@@ -16,7 +16,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         // Implement macro to turn 90 degrees with one button press for turning to shoot each time <----- DO THIS
 
         double k = 1.0;
-        if(gamepad1.left_trigger > .6){
+        if(gamepad1.right_trigger > .3){
             k = 0.5;
         }
         else{
@@ -32,12 +32,13 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
 
         if (gamepad1.right_bumper){
-            flip = true;
-        }
-        else if (gamepad1.left_bumper){
             flip = false;
         }
+        else if (gamepad1.left_bumper){
+            flip = true;
+        }
 
+        telemetry.addData("Flip Orientation: ", flip);
         telemetry.addData("Angle: ", getGyroYaw());
         telemetry.update();
         // ----------------------------------------------- Intake -----------------------------------------------
