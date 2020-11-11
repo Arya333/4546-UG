@@ -17,7 +17,7 @@ import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
 
 
-@Autonomous(name = "SampleAuto", group = "4546")
+@Autonomous(name = "TensorFlowTest", group = "4546")
 public class TensorFlowTest extends LinearOpMode{
 
     private static final String VUFORIA_KEY = "Aa6axCr/////AAABmVc2QsaPSkQJjpSMGsD9/ZosRWS7BswNiE9Sb9VLOcImnf5cWwR01zEMArJtnPJzhJ9tT7d/hf4NWBELaHUGmFmm/9YjcSO09DOuDcZC+gS2AGXGcYFTw4SDBryFvz8OY5jaUAWxnfXzt3uaQcNS/3ScAZsWXL6RS4WazWpYlfeLNyyp2SliGbDza3b7T8DaxHXewmwtX+uobcEv9SS4ivv12Lr14Id9q4Qa+P1ZSSxyMQZ7TUMlZtrb/L9kmMLdLYkBX+74pVTpW9Ftp18uJdvF86qy/Jt3b1t67q5JM2xTHGnF8ETgpwNFEXWOivJdxlSGhTF6p7DCO7yNXEHw+xFa2JkVhoFV9GyBseKP+BdV";

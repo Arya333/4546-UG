@@ -23,10 +23,11 @@ public abstract class SnakeByteOpMode extends OpMode{
     /*Servo srvFlicker;*/
     DcMotor motorIntake;
 
-    /*DcMotor motorShooter;
+    DcMotor motorShooter;
+    DcMotor motorShooter2;
 
-    Servo srvClaw;
-    DcMotor motorPivot;*/
+    /*Servo srvClaw;*/
+    DcMotor motorPivot;
 
     public BNO055IMU gyro;
     Orientation angles;
@@ -53,10 +54,11 @@ public abstract class SnakeByteOpMode extends OpMode{
         /*srvFlicker = hardwareMap.servo.get("srvFlicker");*/
         motorIntake = hardwareMap.dcMotor.get("motorIntake");
 
-        /*motorShooter = hardwareMap.dcMotor.get("motorShooter");
+        motorShooter = hardwareMap.dcMotor.get("motorShooter");
+        motorShooter2 = hardwareMap.dcMotor.get("motorShooter2");
 
-        srvClaw = hardwareMap.servo.get("srvClaw");
-        motorPivot = hardwareMap.dcMotor.get("motorPivot");*/
+        /*srvClaw = hardwareMap.servo.get("srvClaw");*/
+        motorPivot = hardwareMap.dcMotor.get("motorPivot");
 
         motorFL.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBL.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -75,12 +77,15 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorIntake.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorIntake.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
 
-        /*motorShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorShooter.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorShooter2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+        motorShooter2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
 
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
-        motorPivot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);*/
+        motorPivot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
         telemetry.addData("init ", "completed");
         telemetry.update();
@@ -145,25 +150,28 @@ public abstract class SnakeByteOpMode extends OpMode{
     /*public void flick(){
         srvFlicker.setPosition(.4); //placeholder positions - need to change these
         srvFlicker.setPosition(.1);
-    }
+    }*/
 
     public void shootOut(){
         motorShooter.setPower(1);
+        motorShooter2.setPower(1);
     }
 
     public void spinIn(){
         motorShooter.setPower(-.4);
+        motorShooter2.setPower(-.4);
     }
 
     public void stopShooter(){
         motorShooter.setPower(0);
+        motorShooter2.setPower(0);
     }
 
     public void resetPivotEncoders(){
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
-    public void grab(){
+    /*public void grab(){
         srvClaw.setPosition(.9); //placeholder number
     }
 
