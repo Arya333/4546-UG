@@ -9,7 +9,6 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 public class Intake {
 
     public DcMotor motorIntake;
-    public Servo srvFlicker;
 
     LinearOpMode opMode;
     ElapsedTime time;
@@ -17,7 +16,6 @@ public class Intake {
     public Intake(LinearOpMode opMode) throws InterruptedException{
         this.opMode = opMode;
         motorIntake = this.opMode.hardwareMap.dcMotor.get("motorIntake");
-        srvFlicker = this.opMode.hardwareMap.servo.get("srvFlicker");
         time = new ElapsedTime();
     }
 
@@ -33,16 +31,4 @@ public class Intake {
         motorIntake.setPower(0);
     }
 
-    public void flick(){
-        srvFlicker.setPosition(.4); //placeholder positions - need to change these
-        srvFlicker.setPosition(.1);
-    }
-
-    public void initPos(){
-        srvFlicker.setPosition(.1); //placeholder number
-    }
-
-    public void flickPos(){
-        srvFlicker.setPosition(.4); //placeholder number
-    }
 }

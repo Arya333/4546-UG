@@ -9,6 +9,7 @@ public class Shooter {
 
     public DcMotor motorShooter;
     public DcMotor motorShooter2;
+    public Servo srvFlicker;
     LinearOpMode opMode;
     ElapsedTime time;
 
@@ -16,10 +17,12 @@ public class Shooter {
         this.opMode = opMode;
         motorShooter = this.opMode.hardwareMap.dcMotor.get("motorShooter");
         motorShooter = this.opMode.hardwareMap.dcMotor.get("motorShooter2");
+        srvFlicker = this.opMode.hardwareMap.servo.get("srvFlicker");
         time = new ElapsedTime();
 
         motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorShooter2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+
     }
 
     public void shootOut(){
@@ -35,5 +38,18 @@ public class Shooter {
     public void stopShooter(){
         motorShooter.setPower(0);
         motorShooter2.setPower(0);
+    }
+
+    public void flick(){
+        srvFlicker.setPosition(.4); //placeholder positions - need to change these
+        srvFlicker.setPosition(.1);
+    }
+
+    public void initPos(){
+        srvFlicker.setPosition(.1); //placeholder number
+    }
+
+    public void flickPos(){
+        srvFlicker.setPosition(.4); //placeholder number
     }
 }

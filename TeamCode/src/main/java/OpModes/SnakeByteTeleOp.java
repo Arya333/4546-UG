@@ -65,18 +65,9 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         else{
             intakeStop();
         }
-        /*if (gamepad2.x){
-            flick();
-        }*/
 
 
         // ----------------------------------------------- Shooter -----------------------------------------------
-        if (gamepad2.dpad_up && sPower <= .95){
-            sPower += .05;
-        }
-        else if (gamepad2.dpad_down && sPower >= .05){
-            sPower -= .05;
-        }
 
         if (gamepad2.x){
             shootingState = 1;
@@ -100,6 +91,13 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             stopShooter();
         }
 
+        if (gamepad2.dpad_right){
+            flickPos();
+        }
+        if (gamepad2.dpad_left){
+            initPos();
+        }
+
         telemetry.addData("sPower", sPower);
         telemetry.addData("Flip Orientation: ", flip);
         telemetry.addData("Angle: ", getGyroYaw());
@@ -117,6 +115,13 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
         else{
             motorPivot.setPower(0);
+        }
+
+        if (gamepad2.dpad_up){
+            release();
+        }
+        if (gamepad2.dpad_down){
+            grab();
         }
         
     }

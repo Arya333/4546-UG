@@ -20,13 +20,13 @@ public abstract class SnakeByteOpMode extends OpMode{
     DcMotor motorBL;
     DcMotor motorBR;
 
-    /*Servo srvFlicker;*/
+    Servo srvFlicker;
     DcMotor motorIntake;
 
     DcMotor motorShooter;
     DcMotor motorShooter2;
 
-    /*Servo srvClaw;*/
+    Servo srvClaw;
     DcMotor motorPivot;
 
     public BNO055IMU gyro;
@@ -51,13 +51,13 @@ public abstract class SnakeByteOpMode extends OpMode{
         gyro = this.hardwareMap.get(BNO055IMU.class, "imu");
         gyro.initialize(parameters);
 
-        /*srvFlicker = hardwareMap.servo.get("srvFlicker");*/
+        srvFlicker = hardwareMap.servo.get("srvFlicker");
         motorIntake = hardwareMap.dcMotor.get("motorIntake");
 
         motorShooter = hardwareMap.dcMotor.get("motorShooter");
         motorShooter2 = hardwareMap.dcMotor.get("motorShooter2");
 
-        /*srvClaw = hardwareMap.servo.get("srvClaw");*/
+        srvClaw = hardwareMap.servo.get("srvClaw");
         motorPivot = hardwareMap.dcMotor.get("motorPivot");
 
         motorFL.setDirection(DcMotorSimple.Direction.REVERSE);
@@ -81,7 +81,7 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorShooter2.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorShooter2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
-
+        srvFlicker.setDirection(Servo.Direction.REVERSE);
 
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         motorPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
@@ -147,10 +147,18 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorIntake.setPower(0);
     }
 
-    /*public void flick(){
-        srvFlicker.setPosition(.4); //placeholder positions - need to change these
-        srvFlicker.setPosition(.1);
-    }*/
+    public void flick(){
+        srvFlicker.setPosition(.55);
+        srvFlicker.setPosition(.71);
+    }
+
+    public void flickPos(){
+        srvFlicker.setPosition(.55);
+    }
+
+    public void initPos(){
+        srvFlicker.setPosition(.71);
+    }
 
     public void shootOut(){
         motorShooter.setPower(1);
@@ -171,13 +179,13 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
     }
 
-    /*public void grab(){
-        srvClaw.setPosition(.9); //placeholder number
+    public void grab(){
+        srvClaw.setPosition(.55); //placeholder number
     }
 
     public void release(){
-        srvClaw.setPosition(.1); //placeholder number
-    }*/
+        srvClaw.setPosition(.3); //placeholder number
+    }
 
     // Need to add code for the wobble goal pivot motor later
 
