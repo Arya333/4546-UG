@@ -175,7 +175,7 @@ public class Drivetrain {
         double I = 0;
         double angleDiff = sensor.getTrueDiff(angle);
         double changePID = 0;
-        while (Math.abs(angleDiff) > 1 && time.seconds() < timeout) {
+        while (Math.abs(angleDiff) > .5 && time.milliseconds() < timeout) {
             pastTime = currentTime;
             currentTime = time.milliseconds();
             double dT = currentTime - pastTime;
