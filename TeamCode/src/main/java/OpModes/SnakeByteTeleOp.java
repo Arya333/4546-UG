@@ -82,7 +82,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         if (shootingState == 1){
             //shootOut();
             motorShooter.setPower(.35);
-            motorShooter2.setPower(.4);
+            motorShooter2.setPower(.375);
         }
         else if (shootingState == 2){
             spinIn();
