@@ -198,5 +198,33 @@ public class Drivetrain {
         stopMotors();
     }
 
+    public void turnPD(double angle, double p, double d, double timeout){
+        time.reset();
+        double kP = p / 90;
+        double kD = d;
+        double currentTime = time.milliseconds();
+        double pastTime = 0;
+        double prevAngleDiff = sensor.getTrueDiff(angle);
+        double angleDiff = prevAngleDiff;
+        double changePID = 0;
+        while (Math.abs(angleDiff) > .5 && time.milliseconds() < timeout && opMode.opModeIsActive()) {
+            pastTime = currentTime;
+            currentTime = time.milliseconds();
+            double dT = currentTime - pastTime;
+            angleDiff = sensor.getTrueDiff(angle);
+            changePID = (angleDiff * kP) + ((angleDiff - prevAngleDiff) / dT * kD);
+            if (changePID < 0) {
+                startMotors(changePID - .10, -changePID + .10);
+            } else {
+                startMotors(changePID + .10, -changePID - .10);
+            }
+            opMode.telemetry.addData("P", (angleDiff * kP));
+            opMode.telemetry.addData("D", ((Math.abs(angleDiff) - Math.abs(prevAngleDiff)) / dT * kD));
+            opMode.telemetry.update();
+            prevAngleDiff = angleDiff;
+        }
+        stopMotors();
+    }
+
 
 }

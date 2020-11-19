@@ -28,6 +28,7 @@ public class WobbleGoal {
     public void resetPivotEncoders(){
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         opMode.idle();
+        motorPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
     }
 
     public void stopPivotMotor(){
