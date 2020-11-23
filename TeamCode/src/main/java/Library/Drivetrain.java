@@ -188,11 +188,12 @@ public class Drivetrain {
             opMode.telemetry.addData("diff", angleDiff);
             opMode.telemetry.addData("P", P);
             opMode.telemetry.addData("I", I);
+            opMode.telemetry.addData("motorBR power: ", motorBR.getPower());
             opMode.telemetry.update();
             if (changePID < 0) {
-                startMotors(changePID - .075, -changePID + .075);
+                startMotors(changePID - .1, -changePID + .1);
             } else {
-                startMotors(changePID + .075, -changePID - .075);
+                startMotors(changePID + .1, -changePID - .1);
             }
         }
         stopMotors();

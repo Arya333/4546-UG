@@ -56,7 +56,9 @@ public class TensorFlowTest extends LinearOpMode{
             tfod.setZoom(2.5, 16.0/9.0);
         }
 
-        while (!isStarted()) {
+        waitForStart();
+
+        while (isStarted()) {
             if (tfod != null) {
                 // getUpdatedRecognitions() will return null if no new information is available since
                 // the last time that call was made.
@@ -93,9 +95,8 @@ public class TensorFlowTest extends LinearOpMode{
                     }
                 }
                 tfod.shutdown();
+            }
+            telemetry.update();
         }
-        telemetry.update();
-    }
-        waitForStart();
     }
 }

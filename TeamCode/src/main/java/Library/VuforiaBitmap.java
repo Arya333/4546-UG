@@ -33,9 +33,9 @@ public class VuforiaBitmap {
     private CameraDirection CAMERA_CHOICE = CameraDirection.BACK;
     private static final String VUFORIA_KEY = "Aa6axCr/////AAABmVc2QsaPSkQJjpSMGsD9/ZosRWS7BswNiE9Sb9VLOcImnf5cWwR01zEMArJtnPJzhJ9tT7d/hf4NWBELaHUGmFmm/9YjcSO09DOuDcZC+gS2AGXGcYFTw4SDBryFvz8OY5jaUAWxnfXzt3uaQcNS/3ScAZsWXL6RS4WazWpYlfeLNyyp2SliGbDza3b7T8DaxHXewmwtX+uobcEv9SS4ivv12Lr14Id9q4Qa+P1ZSSxyMQZ7TUMlZtrb/L9kmMLdLYkBX+74pVTpW9Ftp18uJdvF86qy/Jt3b1t67q5JM2xTHGnF8ETgpwNFEXWOivJdxlSGhTF6p7DCO7yNXEHw+xFa2JkVhoFV9GyBseKP+BdV";
 
-    private final int RED_THRESHOLD = 25;
-    private final int GREEN_THRESHOLD = 25;
-    private final int BLUE_THRESHOLD = 25;
+    private final int RED_THRESHOLD = 140;
+    private final int GREEN_THRESHOLD = 89;
+    private final int BLUE_THRESHOLD = 105;
 
     public VuforiaBitmap (LinearOpMode opMode){
 
@@ -111,7 +111,7 @@ public class VuforiaBitmap {
         for (int y = bitmap.getHeight() - 5; y > (bitmap.getHeight() / 2); y--) {
             for (int x = 0; x < bitmap.getWidth(); x++) {
                 int pixel = bitmap.getPixel(x, y);
-                if (red(pixel) <= RED_THRESHOLD && blue(pixel) <= BLUE_THRESHOLD && green(pixel) <= GREEN_THRESHOLD) {
+                if (red(pixel) >= RED_THRESHOLD && blue(pixel) <= BLUE_THRESHOLD && green(pixel) >= GREEN_THRESHOLD) {
                     xValues.add(x);
                     yValues.add(y);
                     yellowPixelCount++;
@@ -119,12 +119,11 @@ public class VuforiaBitmap {
             }
         }
 
-        // add code for determining stack height using yellowPixelCount after testing
-        if (yellowPixelCount > 500){
+        if (yellowPixelCount > 4900){
             stackHeight = 4;
             targetZone = "C";
         }
-        else if (yellowPixelCount > 250){
+        else if (yellowPixelCount > 1500){
             stackHeight = 1;
             targetZone = "B";
         }
@@ -132,6 +131,9 @@ public class VuforiaBitmap {
             stackHeight = 0;
             targetZone = "A";
         }
+        opMode.telemetry.addData("yellowPixCount: ", yellowPixelCount);
+        opMode.telemetry.addData("Target Zone: ", targetZone);
+        opMode.telemetry.update();
         return targetZone;
     }
 }

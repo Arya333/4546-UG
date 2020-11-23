@@ -30,8 +30,12 @@ public class SampleAuto extends LinearOpMode{
 
         // ----------------------------------------------- Auto -----------------------------------------------
         sleep(1000);
-        drivetrain.turnPI(-90,1,1,10000);
-        sleep(1500);
+        //drivetrain.turnPI(90,.35,.07,10000);  ---- Not using PI, too much overshoot
+
+        //drivetrain.turnPD(90,.6,.5,5000); ---- Constants for 90 degree turn
+        //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
+
+        drivetrain.turnPD(-45, .7, .6, 5000);
         telemetry.update();
     }
 }
