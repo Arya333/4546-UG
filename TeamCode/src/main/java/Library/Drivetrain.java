@@ -108,6 +108,26 @@ public class Drivetrain {
         }
     }
 
+    public void strafeRightInches(double power, double inches){
+        resetEncoders();
+        while (getEncoderAvg() < inches * countsPerInch){
+            motorBL.setPower(-power);
+            motorFL.setPower(power);
+            motorFR.setPower(-power);
+            motorBR.setPower(power);
+        }
+    }
+
+    public void strafeLeftInches(double power, double inches){
+        resetEncoders();
+        while (getEncoderAvg() < inches * countsPerInch){
+            motorBL.setPower(power);
+            motorFL.setPower(-power);
+            motorFR.setPower(power);
+            motorBR.setPower(-power);
+        }
+    }
+
 
     public void moveGyro(double power, double inches, double heading){
         resetEncoders();
