@@ -180,7 +180,7 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void grab(){
-        srvClaw.setPosition(.55); //placeholder number
+        srvClaw.setPosition(.575); //placeholder number
     }
 
     public void release(){

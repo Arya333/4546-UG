@@ -83,6 +83,10 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             //shootOut();
             //motorShooter.setPower(.35); ---- High Goal
             //motorShooter2.setPower(.383); ---- High Goal
+
+            //motorShooter.setPower(.33); ---- Power Shot
+            //motorShooter2.setPower(.37); ---- Power Shot
+
             motorShooter.setPower(.35);
             motorShooter2.setPower(.383);
         }
