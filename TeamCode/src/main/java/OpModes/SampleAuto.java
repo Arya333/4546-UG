@@ -35,7 +35,7 @@ public class SampleAuto extends LinearOpMode{
         //drivetrain.turnPD(90,.6,.5,5000); ---- Constants for 90 degree turn
         //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
 
-        drivetrain.turnPD(-45, .7, .6, 5000);
+        drivetrain.moveGyro(-.6,10,0);
         telemetry.update();
     }
 }

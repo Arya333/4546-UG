@@ -9,6 +9,7 @@ import Library.Intake;
 import Library.Sensors;
 import Library.Shooter;
 import Library.VuforiaBitmap;
+import Library.WobbleGoal;
 
 @Autonomous(name = "RedPowerShot", group = "4546")
 public class RedPowerShot extends LinearOpMode {
@@ -17,6 +18,7 @@ public class RedPowerShot extends LinearOpMode {
     private Sensors sensors;
     private Intake intake;
     private Shooter shooter;
+    private WobbleGoal wobbleGoal;
     private ElapsedTime runtime = new ElapsedTime();
 
     @Override
@@ -27,30 +29,38 @@ public class RedPowerShot extends LinearOpMode {
         String targetZone = "A";
         drivetrain = new Drivetrain(this);
         sensors = new Sensors(this);
-        //intake = new Intake(this);
-        //shooter = new Shooter(this);
+        intake = new Intake(this);
+        shooter = new Shooter(this);
+        wobbleGoal = new WobbleGoal(this);
+
+        wobbleGoal.grab();
+        wobbleGoal.motorPivot.setPower(-.1);
 
         while (!isStarted()){
             telemetry.addData("Target Zone: ", sample.getStack());
             telemetry.update();
             targetZone = sample.getStack();
         }
-        waitForStart();
-
-        telemetry.addData("Target Zone: ", targetZone);
-        telemetry.update();
 
         waitForStart();
 
         // ----------------------------------------------- Auto -----------------------------------------------
-        sleep(1000);
         //drivetrain.turnPI(90,.35,.07,10000);  ---- Not using PI, too much overshoot
 
         //drivetrain.turnPD(90,.6,.5,5000); ---- Constants for 90 degree turn
         //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
 
-        drivetrain.turnPD(-45, .7, .6, 5000);
-        telemetry.update();
+        if (!isStopRequested()){
+
+            drivetrain.moveGyro(-.45, 8, 0);
+        }
+
+
+        /*sleep(1500);
+        drivetrain.strafeRightInches(.5, 2.5);
+        sleep(500);
+        drivetrain.moveGyro(-.6, 13, 0);
+        sleep(500);*/
 
     }
 }

@@ -29,6 +29,7 @@ public class WobbleGoal {
         motorPivot.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
         opMode.idle();
         motorPivot.setMode(DcMotor.RunMode.RUN_WITHOUT_ENCODER);
+        motorPivot.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
     }
 
     public void stopPivotMotor(){
@@ -44,7 +45,7 @@ public class WobbleGoal {
     }
 
     public void grab(){
-        srvClaw.setPosition(.55); //placeholder number
+        srvClaw.setPosition(.575); //placeholder number
     }
 
     public void release(){

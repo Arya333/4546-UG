@@ -148,16 +148,16 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void flick(){
-        srvFlicker.setPosition(.5);
-        srvFlicker.setPosition(.71);
+        srvFlicker.setPosition(.45);
+        srvFlicker.setPosition(.65);
     }
 
     public void flickPos(){
-        srvFlicker.setPosition(.5);
+        srvFlicker.setPosition(.45);
     }
 
     public void initPos(){
-        srvFlicker.setPosition(.71);
+        srvFlicker.setPosition(.65);
     }
 
     public void shootOut(){

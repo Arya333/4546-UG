@@ -73,6 +73,28 @@ public class Drivetrain {
         opMode.idle();
     }
 
+    public void setDTBrake(){
+        motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        opMode.idle();
+        motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        opMode.idle();
+        motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        opMode.idle();
+        motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        opMode.idle();
+    }
+
+    public void setDTFloat(){
+        motorFL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        opMode.idle();
+        motorFR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        opMode.idle();
+        motorBL.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        opMode.idle();
+        motorBR.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.FLOAT);
+        opMode.idle();
+    }
+
     public double getEncoderAvg(){
         int count = 4;
         if (motorFL.getCurrentPosition() == 0){
@@ -131,7 +153,8 @@ public class Drivetrain {
 
     public void moveGyro(double power, double inches, double heading){
         resetEncoders();
-        double constant = .3; //to reduce power of one side of drivetrain
+        setDTBrake();
+        double constant = .4; //to reduce power of one side of drivetrain
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch && opMode.opModeIsActive()){ //while our avg encoder value is less than desired number of encoder ticks
                 if (sensor.getTrueDiff(heading) > 2){ //if our robot is off its heading to the left (needs to turn right)

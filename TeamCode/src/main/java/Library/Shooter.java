@@ -16,7 +16,7 @@ public class Shooter {
     public Shooter(LinearOpMode opMode) throws InterruptedException{
         this.opMode = opMode;
         motorShooter = this.opMode.hardwareMap.dcMotor.get("motorShooter");
-        motorShooter = this.opMode.hardwareMap.dcMotor.get("motorShooter2");
+        motorShooter2 = this.opMode.hardwareMap.dcMotor.get("motorShooter2");
         srvFlicker = this.opMode.hardwareMap.servo.get("srvFlicker");
         time = new ElapsedTime();
 
@@ -25,14 +25,19 @@ public class Shooter {
 
     }
 
-    public void shootOut(){
-        motorShooter.setPower(1);
-        motorShooter2.setPower(1);
+    public void shootOutPowerShot(){
+        motorShooter.setPower(.33);
+        motorShooter2.setPower(.365);
+    }
+
+    public void shootOutHighGoal(){
+        motorShooter.setPower(.35);
+        motorShooter2.setPower(.383);
     }
 
     public void spinIn(){
-        motorShooter.setPower(-.4);
-        motorShooter2.setPower(-.4);
+        motorShooter.setPower(-.2);
+        motorShooter2.setPower(-.2);
     }
 
     public void stopShooter(){
@@ -41,15 +46,16 @@ public class Shooter {
     }
 
     public void flick(){
-        srvFlicker.setPosition(.4); //placeholder positions - need to change these
-        srvFlicker.setPosition(.1);
+        srvFlicker.setPosition(.45); //placeholder positions - need to change these
+        opMode.sleep(250);
+        srvFlicker.setPosition(.65);
     }
 
     public void initPos(){
-        srvFlicker.setPosition(.1); //placeholder number
+        srvFlicker.setPosition(.65); //placeholder number
     }
 
     public void flickPos(){
-        srvFlicker.setPosition(.4); //placeholder number
+        srvFlicker.setPosition(.45); //placeholder number
     }
 }

@@ -8,7 +8,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
     boolean flip = false;
     int intakeState = 0; // 0 = stop, 1 = in, 2 = out
-    int shootingState = 0; // 0 = stop, 1 = shoot, 2 = inwards
+    int shootingState = 0; // 0 = stop, 1 = high goal, 2 = inwards, 3 = power shot
     double sPower = 1.0;
     ElapsedTime time = new ElapsedTime();
     double timediff = 0;
@@ -23,7 +23,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         double k = 1.0;
 
         if(gamepad1.right_trigger > .3){
-            k = 0.5;
+            k = 0.45;
         }
         else{
             k = 1.0;
@@ -31,10 +31,10 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
 
         if (flip && (Math.abs(gamepad1.left_stick_y) > .1 || Math.abs(gamepad1.left_stick_x) > .1 || Math.abs(gamepad1.right_stick_x) > .1)){
-            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x* .8 * k);
+            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x* .725 * k);
         }
         else{
-            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .8 * k);
+            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .725 * k);
         }
 
         if (gamepad1.right_bumper){
@@ -75,6 +75,9 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         else if (gamepad2.b){
             shootingState = 2;
         }
+        else if (gamepad2.y){
+            shootingState = 3;
+        }
         else if (gamepad2.a){
             shootingState = 0;
         }
@@ -89,6 +92,10 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
             motorShooter.setPower(.35);
             motorShooter2.setPower(.383);
+        }
+        else if (shootingState == 3){
+            motorShooter.setPower(.33);
+            motorShooter2.setPower(.365);
         }
         else if (shootingState == 2){
             spinIn();
