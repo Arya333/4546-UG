@@ -91,9 +91,11 @@ public class RedPowerShot extends LinearOpMode {
 
             // ----------------------------------------------- Drop Wobble Goal 1 -----------------------------------------------
             if (targetZone == "A"){
-                drivetrain.moveGyro(-.6, 20, 0);
+                drivetrain.moveGyro(-.6, 18, 0);
                 sleep(500);
                 drivetrain.turnPD(-90,.6,.5,5000);
+                sleep(300);
+                drivetrain.moveGyro(.6,26.5,-90);
             }
             else if (targetZone == "B"){
 
@@ -102,7 +104,7 @@ public class RedPowerShot extends LinearOpMode {
 
             }
 
-            
+
 
         }
 
