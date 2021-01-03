@@ -36,11 +36,12 @@ public class RedPowerShot extends LinearOpMode {
         wobbleGoal.grab();
         wobbleGoal.motorPivot.setPower(-.1);
 
-        while (!isStarted()){
+        /*while (!isStarted()){
             telemetry.addData("Target Zone: ", sample.getStack());
             telemetry.update();
             targetZone = sample.getStack();
-        }
+            sleep(100);
+        }*/
 
         waitForStart();
 
@@ -51,16 +52,60 @@ public class RedPowerShot extends LinearOpMode {
         //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
 
         if (!isStopRequested()){
+            // ----------------------------------------------- Drive to Launch Line -----------------------------------------------
+            drivetrain.moveGyro(-.6,30,0);
+            sleep(750);
+            drivetrain.strafeRightInches(.6,15.5);
+            sleep(250);
+            drivetrain.turnPD(0,.8,.7,2000);
+            drivetrain.moveGyro(-.6,44, 0);
+            sleep(300);
+            drivetrain.turnPD(4.1,.75,.65,2000);
+            sleep(250);
 
-            drivetrain.moveGyro(-.45, 8, 0);
+
+            // ----------------------------------------------- Shoot Power Goals -----------------------------------------------
+            shooter.shootOutPowerShot();
+            sleep(1600);
+            shooter.flickPos();
+            sleep(1200);
+            shooter.initPos();
+
+            drivetrain.turnPD(0,.8,.7,2000);
+            sleep(500);
+            drivetrain.strafeRightInches(.4, 4.35);
+            sleep(100);
+            drivetrain.turnPD(0,.8,.7,2000);
+            shooter.flickPos();
+            sleep(1200);
+            shooter.initPos();
+
+            drivetrain.turnPD(-6.1,.75,.65,2000);
+            sleep(500);
+            shooter.flickPos();
+            sleep(1200);
+            shooter.initPos();
+            sleep(500);
+            drivetrain.turnPD(0,.8,.7,2000);
+            shooter.stopShooter();
+
+            // ----------------------------------------------- Drop Wobble Goal 1 -----------------------------------------------
+            if (targetZone == "A"){
+                drivetrain.moveGyro(-.6, 20, 0);
+                sleep(500);
+                drivetrain.turnPD(-90,.6,.5,5000);
+            }
+            else if (targetZone == "B"){
+
+            }
+            else{
+
+            }
+
+            
+
         }
 
-
-        /*sleep(1500);
-        drivetrain.strafeRightInches(.5, 2.5);
-        sleep(500);
-        drivetrain.moveGyro(-.6, 13, 0);
-        sleep(500);*/
 
     }
 }

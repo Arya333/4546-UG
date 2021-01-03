@@ -23,6 +23,7 @@ public class SampleAuto extends LinearOpMode{
 
         drivetrain = new Drivetrain(this);
         sensors = new Sensors(this);
+        shooter = new Shooter(this);
         //intake = new Intake(this);
         //shooter = new Shooter(this);
 
@@ -35,7 +36,10 @@ public class SampleAuto extends LinearOpMode{
         //drivetrain.turnPD(90,.6,.5,5000); ---- Constants for 90 degree turn
         //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
 
-        drivetrain.moveGyro(-.6,10,0);
-        telemetry.update();
+        shooter.flickPos();
+        sleep(1200);
+        shooter.initPos();
+        sleep(5000);
+
     }
 }

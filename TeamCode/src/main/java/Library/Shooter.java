@@ -22,12 +22,13 @@ public class Shooter {
 
         motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorShooter2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        srvFlicker.setDirection(Servo.Direction.REVERSE);
 
     }
 
     public void shootOutPowerShot(){
         motorShooter.setPower(.33);
-        motorShooter2.setPower(.365);
+        motorShooter2.setPower(.36);
     }
 
     public void shootOutHighGoal(){
@@ -47,7 +48,7 @@ public class Shooter {
 
     public void flick(){
         srvFlicker.setPosition(.45); //placeholder positions - need to change these
-        opMode.sleep(250);
+        opMode.sleep(100);
         srvFlicker.setPosition(.65);
     }
 

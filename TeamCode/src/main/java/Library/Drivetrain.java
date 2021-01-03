@@ -121,6 +121,7 @@ public class Drivetrain {
         while (getEncoderAvg() < inches * countsPerInch){
             startMotors(power, power);
         }
+        stopMotors();
     }
 
     public void moveTime(int millis, double power){
@@ -128,6 +129,7 @@ public class Drivetrain {
         while (time.milliseconds() < millis){
             startMotors(power, power);
         }
+        stopMotors();
     }
 
     public void strafeRightInches(double power, double inches){
@@ -138,6 +140,7 @@ public class Drivetrain {
             motorFR.setPower(-power);
             motorBR.setPower(power);
         }
+        stopMotors();
     }
 
     public void strafeLeftInches(double power, double inches){
@@ -148,12 +151,12 @@ public class Drivetrain {
             motorFR.setPower(power);
             motorBR.setPower(-power);
         }
+        stopMotors();
     }
 
 
     public void moveGyro(double power, double inches, double heading){
         resetEncoders();
-        setDTBrake();
         double constant = .4; //to reduce power of one side of drivetrain
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch && opMode.opModeIsActive()){ //while our avg encoder value is less than desired number of encoder ticks
@@ -181,6 +184,12 @@ public class Drivetrain {
                 }
             }
         }
+        stopMotors();
+        opMode.telemetry.addData("motorFL encoders: ", motorFL.getCurrentPosition());
+        opMode.telemetry.addData("motorFR encoders: ", motorFR.getCurrentPosition());
+        opMode.telemetry.addData("motorBL encoders: ", motorBL.getCurrentPosition());
+        opMode.telemetry.addData("motorBR encoders: ", motorBR.getCurrentPosition());
+        opMode.telemetry.update();
     }
 
     public void turnP(double angle, double p) {
