@@ -26,7 +26,9 @@ public class RedPowerShot extends LinearOpMode {
 
         // ----------------------------------------------- Init -----------------------------------------------
         VuforiaBitmap sample = new VuforiaBitmap(this);
-        String targetZone = "A";
+        String targetZone = "C";
+        boolean secondWobbleGoal = true; // Do we go for another wobble goal in auto?
+        boolean selectionMade = false;
         drivetrain = new Drivetrain(this);
         sensors = new Sensors(this);
         intake = new Intake(this);
@@ -36,12 +38,30 @@ public class RedPowerShot extends LinearOpMode {
         wobbleGoal.grab();
         wobbleGoal.motorPivot.setPower(-.1);
 
-        /*while (!isStarted()){
-            telemetry.addData("Target Zone: ", sample.getStack());
+
+        while (!isStarted()){
+            telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
             telemetry.update();
-            targetZone = sample.getStack();
-            sleep(100);
-        }*/
+            if (gamepad1.y) {
+                secondWobbleGoal = true;
+                selectionMade = true;
+                telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
+                telemetry.update();
+            } else if (gamepad1.x) {
+                secondWobbleGoal = false;
+                selectionMade = true;
+                telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
+                telemetry.update();
+            }
+
+            if (selectionMade){
+                targetZone = sample.getStack();
+                telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
+                telemetry.addData("Target Zone: ", sample.getStack());
+                telemetry.update();
+                sleep(500);
+            }
+        }
 
         waitForStart();
 
@@ -55,12 +75,12 @@ public class RedPowerShot extends LinearOpMode {
             // ----------------------------------------------- Drive to Launch Line -----------------------------------------------
             drivetrain.moveGyro(-.6,30,0);
             sleep(750);
-            drivetrain.strafeRightInches(.6,15.5);
+            drivetrain.strafeRightInches(.6,15.75);
             sleep(250);
             drivetrain.turnPD(0,.8,.7,2000);
-            drivetrain.moveGyro(-.6,44, 0);
+            drivetrain.moveGyro(-.6,45.5, 0);
             sleep(300);
-            drivetrain.turnPD(4.1,.75,.65,2000);
+            drivetrain.turnPD(4.35,.75,.65,2000);
             sleep(250);
 
 
@@ -77,13 +97,13 @@ public class RedPowerShot extends LinearOpMode {
             sleep(100);
             drivetrain.turnPD(0,.8,.7,2000);
             shooter.flickPos();
-            sleep(1200);
+            sleep(1100);
             shooter.initPos();
 
-            drivetrain.turnPD(-6.1,.75,.65,2000);
+            drivetrain.turnPD(-6.75,.75,.65,2000);
             sleep(500);
             shooter.flickPos();
-            sleep(1200);
+            sleep(1100);
             shooter.initPos();
             sleep(500);
             drivetrain.turnPD(0,.8,.7,2000);
@@ -91,19 +111,86 @@ public class RedPowerShot extends LinearOpMode {
 
             // ----------------------------------------------- Drop Wobble Goal 1 -----------------------------------------------
             if (targetZone == "A"){
-                drivetrain.moveGyro(-.6, 18, 0);
-                sleep(500);
-                drivetrain.turnPD(-90,.6,.5,5000);
+                drivetrain.moveGyro(-.6, 16.75, 0);
                 sleep(300);
-                drivetrain.moveGyro(.6,26.5,-90);
+                drivetrain.turnPD(-90,.7,.6,5000);
+                sleep(300);
+                drivetrain.moveGyro(.6,24.1,-90);
+
+                wobbleGoal.motorPivot.setPower(0);
+                wobbleGoal.rotateToEncoderPos(170,.25);
+                sleep(250);
+                wobbleGoal.release();
             }
             else if (targetZone == "B"){
+                drivetrain.moveGyro(-.6, 39.2, 0);
+                sleep(300);
+                drivetrain.turnPD(-90,.7,.6,5000);
+                sleep(200);
 
+                wobbleGoal.motorPivot.setPower(0);
+                wobbleGoal.rotateToEncoderPos(170,.25);
+                sleep(250);
+                wobbleGoal.release();
             }
             else{
+                drivetrain.moveGyro(-.6, 81.5, 0);
+                sleep(300);
+                drivetrain.turnPD(-90,.7,.6,5000);
+                sleep(300);
+                drivetrain.moveGyro(.6,24,-90);
 
+                wobbleGoal.motorPivot.setPower(0);
+                wobbleGoal.rotateToEncoderPos(170,.25);
+                sleep(250);
+                wobbleGoal.release();
             }
 
+            // ----------------------------------------------- Park -----------------------------------------------
+            if (!secondWobbleGoal){
+                if (targetZone == "A"){
+                    sleep(500);
+                    drivetrain.moveGyro(-.5,23.5,-90);
+                    sleep(200);
+                    wobbleGoal.grab();
+                    wobbleGoal.motorPivot.setPower(-.2);
+                    sleep(250);
+                    drivetrain.turnPD(180,.6,.5,4000);
+                    sleep(300);
+                    drivetrain.moveGyro(-.6, 9,180);
+                    sleep(300);
+                    drivetrain.turnPD(180,.8,.7,3000);
+                }
+                else if (targetZone == "B"){
+                    sleep(500);
+                    drivetrain.moveGyro(-.5,1,-90);
+                    sleep(200);
+                    wobbleGoal.grab();
+                    wobbleGoal.motorPivot.setPower(-.2);
+                    sleep(250);
+                    drivetrain.turnPD(180,.6,.5,4000);
+                    sleep(300);
+                    drivetrain.moveGyro(-.6, 23,180);
+                    sleep(300);
+                    drivetrain.turnPD(180,.8,.7,3000);
+                }
+                else{
+
+                }
+            }
+
+            // ----------------------------------------------- Drop Wobble Goal 2 -----------------------------------------------
+            else{
+                if (targetZone == "A"){
+
+                }
+                else if (targetZone == "B"){
+
+                }
+                else{
+
+                }
+            }
 
 
         }

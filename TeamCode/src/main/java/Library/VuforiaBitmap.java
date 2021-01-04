@@ -63,8 +63,8 @@ public class VuforiaBitmap {
 
         long numImages = picture.getNumImages();
 
-        opMode.telemetry.addData("Num images", numImages);
-        opMode.telemetry.update();
+        //opMode.telemetry.addData("Num images", numImages);
+        //opMode.telemetry.update();
 
         for (int i = 0; i < numImages; i++) {
 
@@ -73,8 +73,8 @@ public class VuforiaBitmap {
                 rgb = picture.getImage(i);
                 break;
             } else {
-                opMode.telemetry.addLine("Didn't find correct RGB format");
-                opMode.telemetry.update();
+                //opMode.telemetry.addLine("Didn't find correct RGB format");
+                //opMode.telemetry.update();
 
             }
         }
@@ -82,10 +82,7 @@ public class VuforiaBitmap {
         Bitmap imageBitmap = Bitmap.createBitmap(rgb.getWidth(), rgb.getHeight(), Bitmap.Config.RGB_565);
         imageBitmap.copyPixelsFromBuffer(rgb.getPixels());
 
-        opMode.telemetry.addData("Image width", imageBitmap.getWidth());
-        opMode.telemetry.addData("Image height", imageBitmap.getHeight());
-        opMode.telemetry.update();
-        opMode.sleep(500);
+        opMode.sleep(200);
 
         picture.close();
 

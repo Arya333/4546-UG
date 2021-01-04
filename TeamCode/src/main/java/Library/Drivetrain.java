@@ -185,11 +185,6 @@ public class Drivetrain {
             }
         }
         stopMotors();
-        opMode.telemetry.addData("motorFL encoders: ", motorFL.getCurrentPosition());
-        opMode.telemetry.addData("motorFR encoders: ", motorFR.getCurrentPosition());
-        opMode.telemetry.addData("motorBL encoders: ", motorBL.getCurrentPosition());
-        opMode.telemetry.addData("motorBR encoders: ", motorBR.getCurrentPosition());
-        opMode.telemetry.update();
     }
 
     public void turnP(double angle, double p) {
