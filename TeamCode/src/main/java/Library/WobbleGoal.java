@@ -38,7 +38,18 @@ public class WobbleGoal {
 
     public void rotateToEncoderPos(int target, double power){
         resetPivotEncoders();
-        while (motorPivot.getCurrentPosition() <= target){
+        while (motorPivot.getCurrentPosition() <= target && opMode.opModeIsActive()){
+            motorPivot.setPower(power);
+            opMode.telemetry.addData("position:", motorPivot.getCurrentPosition());
+            opMode.telemetry.update();
+        }
+        stopPivotMotor();
+    }
+
+    public void rotateTime(int timeMilli, double power){
+        resetPivotEncoders();
+        time.reset();
+        while (time.milliseconds() <= timeMilli && opMode.opModeIsActive()){
             motorPivot.setPower(power);
         }
         stopPivotMotor();

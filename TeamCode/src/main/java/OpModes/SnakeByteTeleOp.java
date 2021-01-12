@@ -30,7 +30,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
 
 
-        if (flip && (Math.abs(gamepad1.left_stick_y) > .1 || Math.abs(gamepad1.left_stick_x) > .1 || Math.abs(gamepad1.right_stick_x) > .1)){
+        if (flip && (Math.abs(gamepad1.left_stick_y) > .05 || Math.abs(gamepad1.left_stick_x) > .05 || Math.abs(gamepad1.right_stick_x) > .05)){
             driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x* .725 * k);
         }
         else{
@@ -90,12 +90,12 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             //motorShooter.setPower(.33); ---- Power Shot
             //motorShooter2.setPower(.37); ---- Power Shot
 
-            motorShooter.setPower(.35);
-            motorShooter2.setPower(.383);
+            motorShooter.setPower(.345);
+            motorShooter2.setPower(.378);
         }
         else if (shootingState == 3){
-            motorShooter.setPower(.33);
-            motorShooter2.setPower(.365);
+            motorShooter.setPower(.32);
+            motorShooter2.setPower(.36);
         }
         else if (shootingState == 2){
             spinIn();
@@ -111,9 +111,9 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             initPos();
         }
 
-        telemetry.addData("sPower", sPower);
         telemetry.addData("Flip Orientation: ", flip);
         telemetry.addData("Angle: ", getGyroYaw());
+        telemetry.addData("pos",motorPivot.getCurrentPosition());
         telemetry.update();
 
         // ----------------------------------------------- Wobble Goal -----------------------------------------------

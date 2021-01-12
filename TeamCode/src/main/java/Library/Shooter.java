@@ -2,6 +2,7 @@ package Library;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.DcMotorSimple;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.util.ElapsedTime;
 
@@ -22,18 +23,19 @@ public class Shooter {
 
         motorShooter.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
         motorShooter2.setMode(DcMotor.RunMode.RUN_USING_ENCODER);
+        motorShooter2.setDirection(DcMotorSimple.Direction.REVERSE);
         srvFlicker.setDirection(Servo.Direction.REVERSE);
 
     }
 
     public void shootOutPowerShot(){
-        motorShooter.setPower(.33);
-        motorShooter2.setPower(.36);
+        motorShooter.setPower(.315);
+        motorShooter2.setPower(.354);
     }
 
     public void shootOutHighGoal(){
-        motorShooter.setPower(.35);
-        motorShooter2.setPower(.383);
+        motorShooter.setPower(.345);
+        motorShooter2.setPower(.378);
     }
 
     public void spinIn(){
