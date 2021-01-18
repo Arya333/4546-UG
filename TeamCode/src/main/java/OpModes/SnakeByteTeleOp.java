@@ -44,6 +44,22 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             flip = true;
         }
 
+        if (gamepad1.dpad_up && (Math.abs(gamepad1.left_stick_y) < .05 || Math.abs(gamepad1.left_stick_x) < .05 || Math.abs(gamepad1.right_stick_x) < .05)){
+            flip = false;
+            if (Math.abs(0 - Math.abs(getGyroYaw())) > 10){
+                startMotors(-1,1);
+            }
+            stopMotors();
+        }
+
+        if (gamepad1.dpad_down && (Math.abs(gamepad1.left_stick_y) < .05 || Math.abs(gamepad1.left_stick_x) < .05 || Math.abs(gamepad1.right_stick_x) < .05)){
+            flip = true;
+            if (Math.abs(180 - Math.abs(getGyroYaw())) > 10){
+                startMotors(-1,1);
+            }
+            stopMotors();
+        }
+
 
         // ----------------------------------------------- Intake -----------------------------------------------
         if (gamepad1.x){
