@@ -85,7 +85,19 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
         // ----------------------------------------------- Shooter -----------------------------------------------
 
-        if (gamepad2.x){
+        if (gamepad2.right_trigger > .2){
+            motorShooter.setPower(.345);
+            motorShooter2.setPower(.378);
+        }
+        else if (gamepad2.left_trigger > .2){
+            motorShooter.setPower(.32);
+            motorShooter2.setPower(.36);
+        }
+        else{
+            stopShooter();
+        }
+
+        /*if (gamepad2.x){
             shootingState = 1;
         }
         else if (gamepad2.b){
@@ -118,12 +130,12 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
         else{
             stopShooter();
-        }
+        }*/
 
-        if (gamepad2.dpad_right){
+        if (gamepad2.a){
             flickPos();
         }
-        if (gamepad2.dpad_left){
+        if (gamepad2.b){
             initPos();
         }
 
@@ -133,23 +145,20 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         telemetry.update();
 
         // ----------------------------------------------- Wobble Goal -----------------------------------------------
-        if (gamepad2.right_bumper){
-            motorPivot.setPower(.25);
+        if (gamepad2.left_stick_y < -.1){
+            motorPivot.setPower(.33);
         }
-        else if (gamepad2.left_bumper && gamepad2.left_trigger > .5){
-            motorPivot.setPower(-.5);
-        }
-        else if (gamepad2.left_bumper){
-            motorPivot.setPower(-.25);
+        else if (gamepad2.left_stick_y > .1){
+            motorPivot.setPower(-.33);
         }
         else{
             motorPivot.setPower(0);
         }
 
-        if (gamepad2.dpad_up){
+        if (gamepad2.x){
             release();
         }
-        if (gamepad2.dpad_down){
+        if (gamepad2.y){
             grab();
         }
         
