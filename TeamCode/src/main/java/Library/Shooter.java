@@ -29,13 +29,13 @@ public class Shooter {
     }
 
     public void shootOutPowerShot(){
-        motorShooter.setPower(.315);
-        motorShooter2.setPower(.354);
+        motorShooter.setPower(.31);
+        motorShooter2.setPower(.345);
     }
 
     public void shootOutHighGoal(){
-        motorShooter.setPower(.343);
-        motorShooter2.setPower(.374);
+        motorShooter.setPower(.328);
+        motorShooter2.setPower(.358);
     }
 
     public void spinIn(){

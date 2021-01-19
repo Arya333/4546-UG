@@ -73,10 +73,10 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
 
         if (intakeState == 1){
-            intakeIn();
+            intakeInSlow();
         }
         else if (intakeState == 2){
-            intakeOut();
+            intakeOutSlow();
         }
         else{
             intakeStop();
@@ -86,12 +86,12 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         // ----------------------------------------------- Shooter -----------------------------------------------
 
         if (gamepad2.right_trigger > .2){
-            motorShooter.setPower(.345);
-            motorShooter2.setPower(.378);
+            motorShooter.setPower(.337);
+            motorShooter2.setPower(.367);
         }
         else if (gamepad2.left_trigger > .2){
-            motorShooter.setPower(.32);
-            motorShooter2.setPower(.36);
+            motorShooter.setPower(.31);
+            motorShooter2.setPower(.345);
         }
         else{
             stopShooter();

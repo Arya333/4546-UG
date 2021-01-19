@@ -149,6 +149,14 @@ public abstract class SnakeByteOpMode extends OpMode{
         motorIntake.setPower(-1);
     }
 
+    public void intakeInSlow(){
+        motorIntake.setPower(.7);
+    }
+
+    public void intakeOutSlow(){
+        motorIntake.setPower(-.7);
+    }
+
     public void intakeStop(){
         motorIntake.setPower(0);
     }

@@ -27,7 +27,7 @@ public class RedPowerShot extends LinearOpMode {
         // ----------------------------------------------- Init -----------------------------------------------
         VuforiaBitmap sample = new VuforiaBitmap(this);
         String targetZone = "A";
-        boolean secondWobbleGoal = true; // Do we go for another wobble goal in auto?
+        boolean secondWobbleGoal = false; // Do we go for another wobble goal in auto?
         boolean selectionMade = false;
         drivetrain = new Drivetrain(this);
         sensors = new Sensors(this);
