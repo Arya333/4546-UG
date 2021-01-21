@@ -26,8 +26,8 @@ public class RedHighGoal extends LinearOpMode {
 
         // ----------------------------------------------- Init -----------------------------------------------
         VuforiaBitmap sample = new VuforiaBitmap(this);
-        String targetZone = "C";
-        boolean secondWobbleGoal = true; // Do we go for another wobble goal in auto?
+        String targetZone = "B";
+        boolean secondWobbleGoal = false; // Do we go for another wobble goal in auto?
         boolean selectionMade = false;
         drivetrain = new Drivetrain(this);
         sensors = new Sensors(this);
@@ -78,12 +78,12 @@ public class RedHighGoal extends LinearOpMode {
             sleep(750);
             drivetrain.strafeLeftInches(.6, 8);
             sleep(250);
-            drivetrain.moveGyro(-.8, 26, 0);
-            sleep(750);
+            drivetrain.moveGyro(-.8, 29.35, 0);
+            sleep(300);
             drivetrain.turnPD(0, 0.8, 0.7, 2000);
-            sleep(750);
+            sleep(250);
             drivetrain.strafeRightInches(.6, 28);
-            sleep(1000);
+            sleep(250);
             drivetrain.turnPD(0, 0.8, 0.7, 2000);
 
             // ----------------------------------------------- Shoot High Goal -----------------------------------------------
@@ -94,16 +94,12 @@ public class RedHighGoal extends LinearOpMode {
             sleep(1200);
             shooter.initPos();
 
-            sleep(1000);
-            shooter.shootOutHighGoal();
-            sleep(1600);
+            sleep(1300);
             shooter.flickPos();
             sleep(1200);
             shooter.initPos();
 
-            sleep(1000);
-            shooter.shootOutHighGoal();
-            sleep(1600);
+            sleep(1300);
             shooter.flickPos();
             sleep(1200);
             shooter.initPos();
@@ -112,25 +108,27 @@ public class RedHighGoal extends LinearOpMode {
             // ----------------------------------------------- Drop Wobble Goal 1 -----------------------------------------------
             if (targetZone == "A"){
 
-                drivetrain.turnPD(-90, .7, .5, 2000);
+                drivetrain.turnPD(-90, .7, .4, 2000);
                 sleep(300);
-                drivetrain.strafeLeftInches(.7,11);
+                drivetrain.strafeLeftInches(.7,13.75);
                 sleep(250);
                 drivetrain.moveGyro(.8, 4.75, -90);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(1500,.25);
+                wobbleGoal.rotateTime(1000,.45);
                 sleep(250);
                 wobbleGoal.release();
 
             }
             else if (targetZone == "B"){
-                drivetrain.turnPD(180, .78,.4, 4000);
+                drivetrain.turnPD(180, .7,.4, 4000);
                 sleep(350);
-                drivetrain.moveGyro(.8, 13.5, 180);
+                drivetrain.strafeLeftInches(.6, 5);
+                sleep(250);
+                drivetrain.moveGyro(.8, 12, 180);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(1500,.25);
+                wobbleGoal.rotateTime(1500,.45);
                 sleep(250);
                 wobbleGoal.release();
 
@@ -141,7 +139,7 @@ public class RedHighGoal extends LinearOpMode {
                 drivetrain.moveGyro(.8, 45, -175);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(1500,.25);
+                wobbleGoal.rotateTime(1500,.45);
                 sleep(250);
                 wobbleGoal.release();
             }
@@ -149,9 +147,25 @@ public class RedHighGoal extends LinearOpMode {
             // ----------------------------------------------- Park -----------------------------------------------
             if (!secondWobbleGoal){
                 if (targetZone == "A"){
+                    drivetrain.moveGyro(-.7,2,-90);
+                    sleep(200);
+                    wobbleGoal.grab();
+                    wobbleGoal.motorPivot.setPower(-.2);
+                    sleep(100);
+                    drivetrain.strafeRightInches(.6, 5);
+                    sleep(200);
+                    drivetrain.turnPD(180, .8, .5,2000);
+                    sleep(100);
+                    drivetrain.moveGyro(-.6, 2, 180);
 
                 }
                 else if (targetZone == "B"){
+                    drivetrain.moveGyro(-.8, 14.9, 180);
+                    sleep(350);
+                    wobbleGoal.grab();
+                    wobbleGoal.motorPivot.setPower(-.2);
+                    sleep(300);
+                    drivetrain.turnPD(180,.7,.5,1000);
 
                 }
                 else{

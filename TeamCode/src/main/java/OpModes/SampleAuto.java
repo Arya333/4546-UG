@@ -39,7 +39,7 @@ public class SampleAuto extends LinearOpMode{
         //drivetrain.turnPD(90,.6,.5,5000); ---- Constants for 90 degree turn
         //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
 
-        wobbleGoal.rotateTime(2000,.25);
+        drivetrain.turnPD(90, .7, .4, 2000);
         sleep(3000);
 
     }
