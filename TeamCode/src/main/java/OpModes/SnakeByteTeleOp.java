@@ -9,10 +9,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
     boolean flip = false;
     int intakeState = 0; // 0 = stop, 1 = in, 2 = out
     int shootingState = 0; // 0 = stop, 1 = high goal, 2 = inwards, 3 = power shot
-    double sPower = 1.0;
     ElapsedTime time = new ElapsedTime();
-    double timediff = 0;
-    double timeold = 0;
 
     public void loop(){
 
@@ -86,12 +83,12 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         // ----------------------------------------------- Shooter -----------------------------------------------
 
         if (gamepad2.right_trigger > .2){
-            motorShooter.setPower(.35);
-            motorShooter2.setPower(.37);
+            motorShooter.setPower(.355);
+            motorShooter2.setPower(.373);
         }
         else if (gamepad2.left_trigger > .2){
-            motorShooter.setPower(.31);
-            motorShooter2.setPower(.345);
+            motorShooter.setPower(.325);
+            motorShooter2.setPower(.35);
         }
         else{
             stopShooter();
@@ -145,7 +142,14 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         telemetry.update();
 
         // ----------------------------------------------- Wobble Goal -----------------------------------------------
-        if (gamepad2.left_stick_y < -.1){
+
+        if (gamepad2.left_stick_y < -.1 && gamepad2.left_bumper){
+            motorPivot.setPower(.75);
+        }
+        else if (gamepad2.left_stick_y > .1 && gamepad2.left_bumper){
+            motorPivot.setPower(-.75);
+        }
+        else if (gamepad2.left_stick_y < -.1){
             motorPivot.setPower(.33);
         }
         else if (gamepad2.left_stick_y > .1){
@@ -154,6 +158,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         else{
             motorPivot.setPower(0);
         }
+
 
         if (gamepad2.x){
             release();
