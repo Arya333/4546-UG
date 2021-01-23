@@ -26,7 +26,7 @@ public class RedPowerShot extends LinearOpMode {
 
         // ----------------------------------------------- Init -----------------------------------------------
         VuforiaBitmap sample = new VuforiaBitmap(this);
-        String targetZone = "B";
+        String targetZone = "C";
         boolean secondWobbleGoal = false; // Do we go for another wobble goal in auto?
         boolean selectionMade = false;
         drivetrain = new Drivetrain(this);
@@ -134,11 +134,11 @@ public class RedPowerShot extends LinearOpMode {
                 wobbleGoal.release();
             }
             else{
-                drivetrain.moveGyro(-.6, 81.3, 0);
+                drivetrain.moveGyro(-.8, 72, 0);
                 sleep(300);
-                drivetrain.turnPD(-90,.7,.6,5000);
+                drivetrain.turnPD(-90,.7,.4,5000);
                 sleep(300);
-                drivetrain.moveGyro(.6,24,-90);
+                drivetrain.moveGyro(.8,19,-90);
 
                 wobbleGoal.motorPivot.setPower(0);
                 wobbleGoal.rotateTime(1000,.45);
@@ -176,14 +176,14 @@ public class RedPowerShot extends LinearOpMode {
                 }
                 else{
                     sleep(500);
-                    drivetrain.moveGyro(-.5,23.5,-90);
+                    drivetrain.moveGyro(-.8,19.5,-90);
                     sleep(200);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.2);
                     sleep(250);
-                    drivetrain.turnPD(180,.6,.5,4000);
+                    drivetrain.turnPD(180,.7,.4,4000);
                     sleep(300);
-                    drivetrain.moveGyro(-.6, 72,180);
+                    drivetrain.moveGyro(-.8, 69,180);
                     sleep(300);
                     drivetrain.turnPD(180,.8,.7,3000);
                 }

@@ -84,7 +84,9 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
         if (gamepad2.right_trigger > .2){
             motorShooter.setPower(.355);
-            motorShooter2.setPower(.373);
+            motorShooter2.setPower(.366);
+            //motorShooter.setPower(.347);
+            //motorShooter2.setPower(.366);
         }
         else if (gamepad2.left_trigger > .2){
             motorShooter.setPower(.325);
@@ -144,16 +146,16 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         // ----------------------------------------------- Wobble Goal -----------------------------------------------
 
         if (gamepad2.left_stick_y < -.1 && gamepad2.left_bumper){
-            motorPivot.setPower(.75);
+            motorPivot.setPower(-.5);
         }
         else if (gamepad2.left_stick_y > .1 && gamepad2.left_bumper){
-            motorPivot.setPower(-.75);
+            motorPivot.setPower(.5);
         }
         else if (gamepad2.left_stick_y < -.1){
-            motorPivot.setPower(.33);
+            motorPivot.setPower(-.33);
         }
         else if (gamepad2.left_stick_y > .1){
-            motorPivot.setPower(-.33);
+            motorPivot.setPower(.33);
         }
         else{
             motorPivot.setPower(0);
