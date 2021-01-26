@@ -38,7 +38,7 @@ public class RedHighGoal extends LinearOpMode {
         wobbleGoal.grab();
         wobbleGoal.motorPivot.setPower(-.1);
 
-        /*
+
         while (!isStarted()){
             telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
             telemetry.update();
@@ -62,7 +62,7 @@ public class RedHighGoal extends LinearOpMode {
                 sleep(500);
             }
         }
-        */
+
         waitForStart();
 
         // ----------------------------------------------- Auto -----------------------------------------------

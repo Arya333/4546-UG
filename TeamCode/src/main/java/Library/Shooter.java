@@ -29,8 +29,8 @@ public class Shooter {
     }
 
     public void shootOutPowerShot(){
-        motorShooter.setPower(.32);
-        motorShooter2.setPower(.347);
+        motorShooter.setPower(.33);
+        motorShooter2.setPower(.35);
     }
 
     public void shootOutHighGoal(){

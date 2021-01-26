@@ -38,7 +38,7 @@ public class RedPowerShot extends LinearOpMode {
         wobbleGoal.grab();
         wobbleGoal.motorPivot.setPower(-.1);
 
-        /*
+
         while (!isStarted()){
             telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
             telemetry.update();
@@ -62,7 +62,7 @@ public class RedPowerShot extends LinearOpMode {
                 sleep(500);
             }
         }
-        */
+
         waitForStart();
 
         // ----------------------------------------------- Auto -----------------------------------------------
@@ -88,7 +88,7 @@ public class RedPowerShot extends LinearOpMode {
             shooter.shootOutPowerShot();
             sleep(1700);
             shooter.flickPos();
-            sleep(1100);
+            sleep(1200);
             shooter.initPos();
 
             drivetrain.turnPD(0,.8,.7,2000);
@@ -97,13 +97,13 @@ public class RedPowerShot extends LinearOpMode {
             sleep(100);
             drivetrain.turnPD(0,.8,.7,2000);
             shooter.flickPos();
-            sleep(1100);
+            sleep(1500);
             shooter.initPos();
 
             drivetrain.turnPD(-6.2,.75,.65,2000);
             sleep(500);
             shooter.flickPos();
-            sleep(1100);
+            sleep(1500);
             shooter.initPos();
             sleep(500);
             drivetrain.turnPD(0,.8,.7,2000);
@@ -111,7 +111,7 @@ public class RedPowerShot extends LinearOpMode {
 
             // ----------------------------------------------- Drop Wobble Goal 1 -----------------------------------------------
             if (targetZone == "A"){
-                drivetrain.moveGyro(-.8, 12.4, 0);
+                drivetrain.moveGyro(-.8, 14.8, 0);
                 sleep(300);
                 drivetrain.turnPD(-90,.7,.4,3000);
                 sleep(300);
@@ -123,15 +123,18 @@ public class RedPowerShot extends LinearOpMode {
                 wobbleGoal.release();
             }
             else if (targetZone == "B"){
-                drivetrain.moveGyro(-.8, 39.2, 0);
+                drivetrain.moveGyro(-.8, 40, 0);
                 sleep(300);
                 drivetrain.turnPD(-90,.7,.4,3000);
+                sleep(150);
+                drivetrain.moveGyro(.7,3,-90);
                 sleep(200);
 
                 wobbleGoal.motorPivot.setPower(0);
                 wobbleGoal.rotateTime(1000,.45);
                 sleep(250);
                 wobbleGoal.release();
+
             }
             else{
                 drivetrain.moveGyro(-.8, 72, 0);
@@ -157,20 +160,20 @@ public class RedPowerShot extends LinearOpMode {
                     sleep(250);
                     drivetrain.turnPD(180,.7,.4,4000);
                     sleep(300);
-                    drivetrain.moveGyro(-.8, 9,180);
+                    drivetrain.moveGyro(-.8, 7.5,180);
                     sleep(300);
                     drivetrain.turnPD(180,.8,.7,3000);
                 }
                 else if (targetZone == "B"){
                     sleep(500);
-                    drivetrain.moveGyro(-.8,1,-90);
+                    drivetrain.moveGyro(-.8,3,-90);
                     sleep(200);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.2);
                     sleep(250);
                     drivetrain.turnPD(180,.7,.4,4000);
                     sleep(300);
-                    drivetrain.moveGyro(-.8, 33,180);
+                    drivetrain.moveGyro(-.8, 27,180);
                     sleep(300);
                     drivetrain.turnPD(180,.8,.7,3000);
                 }
