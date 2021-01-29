@@ -38,7 +38,7 @@ public class RedHighGoal extends LinearOpMode {
         wobbleGoal.grab();
         wobbleGoal.motorPivot.setPower(-.1);
 
-
+        /*
         while (!isStarted()){
             telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
             telemetry.update();
@@ -61,7 +61,7 @@ public class RedHighGoal extends LinearOpMode {
                 telemetry.update();
                 sleep(500);
             }
-        }
+        }*/
 
         waitForStart();
 
@@ -78,7 +78,7 @@ public class RedHighGoal extends LinearOpMode {
             sleep(750);
             drivetrain.strafeLeftInches(.6, 8);
             sleep(250);
-            drivetrain.moveGyro(-.8, 28.3, 0);
+            drivetrain.moveGyro(-.8, 30, 0);
             sleep(300);
             drivetrain.turnPD(0, 0.8, 0.7, 2000);
             sleep(250);
@@ -138,7 +138,7 @@ public class RedHighGoal extends LinearOpMode {
             else {
                 drivetrain.turnPD(-163, .7, .4, 3000);
                 sleep(350);
-                drivetrain.moveGyro(.8, 45, -163);
+                drivetrain.moveGyro(.8, 46, -163);
 
                 wobbleGoal.motorPivot.setPower(0);
                 wobbleGoal.rotateTime(1500,.45);
@@ -178,7 +178,7 @@ public class RedHighGoal extends LinearOpMode {
                     sleep(300);
                     drivetrain.turnPD(180,.7,.5,1000);
                     sleep(300);
-                    drivetrain.moveGyro(-.8, 35,180);
+                    drivetrain.moveGyro(-.8, 34,180);
                 }
             }
 

@@ -116,11 +116,11 @@ public class VuforiaBitmap {
             }
         }
 
-        if (yellowPixelCount > 4000){
+        if (yellowPixelCount > 4600){
             stackHeight = 4;
             targetZone = "C";
         }
-        else if (yellowPixelCount > 1500){
+        else if (yellowPixelCount > 1600){
             stackHeight = 1;
             targetZone = "B";
         }

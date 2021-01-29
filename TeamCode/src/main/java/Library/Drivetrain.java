@@ -157,10 +157,10 @@ public class Drivetrain {
 
     public void moveGyro(double power, double inches, double heading){
         resetEncoders();
-        double constant = .4; //to reduce power of one side of drivetrain
+        double constant = .7; //to reduce power of one side of drivetrain
         if (power > 0){
             while (getEncoderAvg() < inches * countsPerInch && opMode.opModeIsActive()){ //while our avg encoder value is less than desired number of encoder ticks
-                if (sensor.getTrueDiff(heading) > 2){ //if our robot is off its heading to the left (needs to turn right)
+                if (sensor.getTrueDiff(heading) > 1.6){ //if our robot is off its heading to the left (needs to turn right)
                     startMotors(power, power * constant); //apply less power to right side so we turn right to maintain our heading
                 }
                 else if (sensor.getTrueDiff(heading) < -2){ //if our robot is off its heading to the right (needs to turn left)
@@ -173,7 +173,7 @@ public class Drivetrain {
         }
         else{
             while (getEncoderAvg() < inches * countsPerInch && opMode.opModeIsActive()){ //everything is swapped when we move backwards
-                if (sensor.getTrueDiff(heading) > 2){
+                if (sensor.getTrueDiff(heading) > 1.6){
                     startMotors(power * constant, power);
                 }
                 else if (sensor.getTrueDiff(heading) < -2){

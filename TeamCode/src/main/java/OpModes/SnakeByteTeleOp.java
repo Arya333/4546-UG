@@ -70,10 +70,10 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         }
 
         if (intakeState == 1){
-            intakeInSlow();
+            intakeIn();
         }
         else if (intakeState == 2){
-            intakeOutSlow();
+            intakeOut();
         }
         else{
             intakeStop();
