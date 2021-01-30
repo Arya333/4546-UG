@@ -146,16 +146,16 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         // ----------------------------------------------- Wobble Goal -----------------------------------------------
 
         if (gamepad2.left_stick_y < -.1 && gamepad2.left_bumper){
-            motorPivot.setPower(-.5);
+            motorPivot.setPower(-.47);
         }
         else if (gamepad2.left_stick_y > .1 && gamepad2.left_bumper){
-            motorPivot.setPower(.5);
+            motorPivot.setPower(.47);
         }
         else if (gamepad2.left_stick_y < -.1){
-            motorPivot.setPower(-.33);
+            motorPivot.setPower(-.25);
         }
         else if (gamepad2.left_stick_y > .1){
-            motorPivot.setPower(.33);
+            motorPivot.setPower(.25);
         }
         else{
             motorPivot.setPower(0);
