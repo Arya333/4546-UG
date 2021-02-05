@@ -30,12 +30,12 @@ public class Shooter {
 
     public void shootOutPowerShot(){
         motorShooter.setPower(.324);
-        motorShooter2.setPower(.343);
+        motorShooter2.setPower(.3445);
     }
 
     public void shootOutHighGoal(){
         motorShooter.setPower(.355);
-        motorShooter2.setPower(.368);
+        motorShooter2.setPower(.3668);
     }
 
     public void spinIn(){

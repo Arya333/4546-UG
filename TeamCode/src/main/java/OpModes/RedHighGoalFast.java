@@ -11,8 +11,8 @@ import Library.Shooter;
 import Library.VuforiaBitmap;
 import Library.WobbleGoal;
 
-@Autonomous(name = "RedHighGoal", group = "4546")
-public class RedHighGoal extends LinearOpMode {
+@Autonomous(name = "RedHighGoalFast", group = "4546")
+public class RedHighGoalFast extends LinearOpMode {
 
     private Drivetrain drivetrain;
     private Sensors sensors;
@@ -74,34 +74,30 @@ public class RedHighGoal extends LinearOpMode {
         if (!isStopRequested()){
             // ----------------------------------------------- Drive to Launch Line -----------------------------------------------
 
-            drivetrain.moveGyro(-.8, 19.85, 0);
-            sleep(750);
-            drivetrain.strafeLeftInches(.6, 8);
-            sleep(250);
-            drivetrain.moveGyro(-.8, 29.4, 0);
-            sleep(300);
-            drivetrain.turnPD(0, 0.8, 0.7, 2000);
-            sleep(250);
-            drivetrain.strafeRightInches(.6, 23.4);
-            sleep(250);
-            drivetrain.turnPD(0, 0.8, 0.7, 2000);
+            drivetrain.moveGyro(-.95, 50, 0);
+            sleep(200);
+            drivetrain.turnPD(0, 0.8, 0.7, 1000);
+            shooter.shootOutHighGoal();
+            sleep(200);
+            drivetrain.strafeRightInches(.95, 26);
+            sleep(200);
+            drivetrain.turnPD(0, 0.8, 0.7, 1000);
 
             // ----------------------------------------------- Shoot High Goal -----------------------------------------------
 
-            shooter.shootOutHighGoal();
-            sleep(1700);
+            sleep(1000);
             shooter.flickPos();
-            sleep(1450);
+            sleep(1400);
             shooter.initPos();
 
-            sleep(1700);
+            sleep(1600);
             shooter.flickPos();
-            sleep(900);
+            sleep(850);
             shooter.initPos();
 
-            sleep(1800);
+            sleep(1600);
             shooter.flickPos();
-            sleep(900);
+            sleep(850);
             shooter.initPos();
             shooter.stopShooter();
 
@@ -109,76 +105,78 @@ public class RedHighGoal extends LinearOpMode {
             if (targetZone == "A"){
 
                 drivetrain.turnPD(-90, .7, .4, 2000);
-                sleep(300);
-                drivetrain.strafeLeftInches(.7,14.9);
                 sleep(250);
-                drivetrain.moveGyro(.8, 4.75, -90);
+                drivetrain.strafeLeftInches(.95,14);
+                sleep(250);
+                drivetrain.moveGyro(.95, 4, -90);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(850,.45);
-                sleep(250);
+                wobbleGoal.rotateTime(700,.5);
+                sleep(150);
                 wobbleGoal.release();
 
             }
             else if (targetZone == "B"){
-                drivetrain.turnPD(180, .7,.4, 4000);
-                sleep(350);
-                drivetrain.strafeLeftInches(.6, 13.5);
-                sleep(300);
+                drivetrain.turnPD(180, .7,.4, 3000);
+                sleep(200);
+                drivetrain.turnPD(0, 0.8, 0.7, 1000);
+                sleep(100);
+                drivetrain.strafeLeftInches(.95, 13);
+                sleep(250);
                 drivetrain.turnPD(180, .9,.4,1000);
                 sleep(100);
-                drivetrain.moveGyro(.8, 12, 180);
+                drivetrain.moveGyro(.95, 12, 180);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(850,.45);
-                sleep(250);
+                wobbleGoal.rotateTime(700,.5);
+                sleep(150);
                 wobbleGoal.release();
 
             }
             else {
                 drivetrain.turnPD(-163, .7, .4, 3000);
-                sleep(350);
-                drivetrain.moveGyro(.8, 49.4, -163);
+                sleep(250);
+                drivetrain.moveGyro(.95, 48, -163);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(850,.45);
-                sleep(250);
+                wobbleGoal.rotateTime(700,.5);
+                sleep(150);
                 wobbleGoal.release();
             }
 
             // ----------------------------------------------- Park -----------------------------------------------
             if (!secondWobbleGoal){
                 if (targetZone == "A"){
-                    drivetrain.moveGyro(-.7,2,-90);
+                    drivetrain.moveGyro(-.95,1.2,-90);
                     sleep(200);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.2);
                     sleep(100);
-                    drivetrain.strafeRightInches(.6, 5);
+                    drivetrain.strafeRightInches(.95, 4);
                     sleep(200);
                     drivetrain.turnPD(180, .8, .5,2000);
                     sleep(100);
-                    drivetrain.moveGyro(-.6, 2, 180);
+                    drivetrain.moveGyro(-.95, 1.3, 180);
 
                 }
                 else if (targetZone == "B"){
-                    drivetrain.moveGyro(-.8, 13, 180);
-                    sleep(350);
+                    drivetrain.moveGyro(-.95, 12, 180);
+                    sleep(250);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.2);
-                    sleep(500);
+                    sleep(250);
                     drivetrain.turnPD(180,.7,.5,1000);
 
                 }
                 else{
-                    drivetrain.moveGyro(-.8, 3,-163);
+                    drivetrain.moveGyro(-.95, 3,-163);
                     sleep(250);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.2);
-                    sleep(300);
+                    sleep(250);
                     drivetrain.turnPD(180,.7,.5,1000);
-                    sleep(300);
-                    drivetrain.moveGyro(-.8, 31,180);
+                    sleep(250);
+                    drivetrain.moveGyro(-.95, 27,180);
                 }
             }
 
@@ -203,4 +201,3 @@ public class RedHighGoal extends LinearOpMode {
 
     }
 }
-

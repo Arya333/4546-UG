@@ -76,12 +76,12 @@ public class RedPowerShot extends LinearOpMode {
             // ----------------------------------------------- Drive to Launch Line -----------------------------------------------
             drivetrain.moveGyro(-.8,20,0);
             sleep(750);
-            drivetrain.strafeRightInches(.8,15.83);
+            drivetrain.strafeRightInches(.8,12.94);
             sleep(250);
             drivetrain.turnPD(0,.8,.7,2000);
-            drivetrain.moveGyro(-.8,29.8, 0);
+            drivetrain.moveGyro(-.8,31.4, 0);
             sleep(300);
-            drivetrain.turnPD(4.2,.75,.65,2000);
+            drivetrain.turnPD(4.68,.75,.65,2000);
             sleep(250);
 
 
@@ -94,14 +94,14 @@ public class RedPowerShot extends LinearOpMode {
 
             drivetrain.turnPD(0,.8,.7,2000);
             sleep(500);
-            drivetrain.strafeRightInches(.4, 4.45);
+            drivetrain.strafeRightInches(.4, 3);
             sleep(100);
             drivetrain.turnPD(0,.8,.7,2000);
             shooter.flickPos();
             sleep(900);
             shooter.initPos();
 
-            drivetrain.turnPD(-6.34,.75,.65,2000);
+            drivetrain.turnPD(-6,.75,.65,2000);
             sleep(500);
             shooter.flickPos();
             sleep(900);
@@ -112,11 +112,11 @@ public class RedPowerShot extends LinearOpMode {
 
             // ----------------------------------------------- Drop Wobble Goal 1 -----------------------------------------------
             if (targetZone == "A"){
-                drivetrain.moveGyro(-.8, 11.4, 0);
+                drivetrain.moveGyro(-.8, 10.2, 0);
                 sleep(300);
                 drivetrain.turnPD(-90,.7,.4,3000);
                 sleep(300);
-                drivetrain.moveGyro(.8,19.3,-90);
+                drivetrain.moveGyro(.8,20.5,-90);
 
                 wobbleGoal.motorPivot.setPower(0);
                 wobbleGoal.rotateTime(850,.45);
@@ -138,7 +138,7 @@ public class RedPowerShot extends LinearOpMode {
 
             }
             else{
-                drivetrain.moveGyro(-.8, 71.5, 0);
+                drivetrain.moveGyro(-.8, 72.5, 0);
                 sleep(300);
                 drivetrain.turnPD(-90,.7,.4,5000);
                 sleep(300);
@@ -174,7 +174,7 @@ public class RedPowerShot extends LinearOpMode {
                     sleep(250);
                     drivetrain.turnPD(180,.7,.4,4000);
                     sleep(300);
-                    drivetrain.moveGyro(-.8, 30.3,180);
+                    drivetrain.moveGyro(-.8, 29.4,180);
                     sleep(300);
                     drivetrain.turnPD(180,.8,.7,3000);
                 }
@@ -188,7 +188,7 @@ public class RedPowerShot extends LinearOpMode {
                     drivetrain.strafeRightInches(.8,5);
                     drivetrain.turnPD(180,.7,.4,4000);
                     sleep(300);
-                    drivetrain.moveGyro(-.8, 63.3,180);
+                    drivetrain.moveGyro(-.8, 58,180);
                     sleep(300);
                     drivetrain.turnPD(180,.8,.7,3000);
                 }
