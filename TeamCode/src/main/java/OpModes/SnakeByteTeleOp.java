@@ -20,7 +20,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         double k = 1.0;
 
         if(gamepad1.right_trigger > .3){
-            k = 0.45;
+            k = 0.4;
         }
         else{
             k = 1.0;
@@ -28,10 +28,10 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
 
         if (flip && (Math.abs(gamepad1.left_stick_y) > .05 || Math.abs(gamepad1.left_stick_x) > .05 || Math.abs(gamepad1.right_stick_x) > .05)){
-            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x* .725 * k);
+            driveTrainPower(gamepad1.left_stick_y * k, -gamepad1.left_stick_x * k, -gamepad1.right_stick_x* .78 * k);
         }
         else{
-            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .725 * k);
+            driveTrainPower(-gamepad1.left_stick_y * k, gamepad1.left_stick_x * k, -gamepad1.right_stick_x * .78 * k);
         }
 
         if (gamepad1.right_bumper){
