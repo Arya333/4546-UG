@@ -26,8 +26,8 @@ public class RedHighGoalFast extends LinearOpMode {
 
         // ----------------------------------------------- Init -----------------------------------------------
         VuforiaBitmap sample = new VuforiaBitmap(this);
-        String targetZone = "C";
-        boolean secondWobbleGoal = false; // Do we go for another wobble goal in auto?
+        String targetZone = "A";
+        boolean secondWobbleGoal = true; // Do we go for another wobble goal in auto?
         boolean selectionMade = false;
         drivetrain = new Drivetrain(this);
         sensors = new Sensors(this);
@@ -79,23 +79,23 @@ public class RedHighGoalFast extends LinearOpMode {
             drivetrain.turnPD(0, 0.8, 0.7, 1000);
             shooter.shootOutHighGoal();
             sleep(200);
-            drivetrain.strafeRightInches(.95, 21.4);
+            drivetrain.strafeRightInches(.95, 20.8);
             sleep(200);
-            drivetrain.turnPD(0, 0.8, 0.7, 1000);
+            drivetrain.turnPD(0, 0.86, 0.55, 1000);
 
             // ----------------------------------------------- Shoot High Goal -----------------------------------------------
 
-            sleep(1000);
+            sleep(1400);
             shooter.flickPos();
             sleep(1400);
             shooter.initPos();
 
-            sleep(1450);
+            sleep(1600);
             shooter.flickPos();
             sleep(850);
             shooter.initPos();
 
-            sleep(1450);
+            sleep(1600);
             shooter.flickPos();
             sleep(850);
             shooter.initPos();
@@ -106,7 +106,7 @@ public class RedHighGoalFast extends LinearOpMode {
 
                 drivetrain.turnPD(-90, .7, .4, 2000);
                 sleep(250);
-                drivetrain.strafeLeftInches(.95,22.7);
+                drivetrain.strafeLeftInches(.95,21.1);
                 sleep(250);
                 drivetrain.moveGyro(.95, 5.4, -90);
 
@@ -140,6 +140,7 @@ public class RedHighGoalFast extends LinearOpMode {
                 wobbleGoal.rotateTime(700,.5);
                 sleep(150);
                 wobbleGoal.release();
+                sleep(250);
             }
 
             // ----------------------------------------------- Park -----------------------------------------------
@@ -181,11 +182,32 @@ public class RedHighGoalFast extends LinearOpMode {
             // ----------------------------------------------- Drop Wobble Goal 2 -----------------------------------------------
             else{
                 if (targetZone == "A"){
+                    drivetrain.moveGyro(-.95, 11.5, -90);
+                    sleep(250);
+                    drivetrain.turnPD(0, .8, .4, 1800);
+                    sleep(250);
+                    drivetrain.moveGyro(.95, 47.2, 0);
+                    sleep(1000);
 
+                    wobbleGoal.grab();
+                    sleep(250);
+                    wobbleGoal.motorPivot.setPower(-.47);
 
+                    drivetrain.moveGyro(-.95, 55.7, 0);
+                    sleep(250);
+                    drivetrain.turnPD(-90, .8, .4, 1800);
+                    sleep(250);
+                    drivetrain.moveGyro(.95, 3.4, -90);
+
+                    wobbleGoal.motorPivot.setPower(0);
+                    wobbleGoal.rotateTime(700,.5);
+                    sleep(250);
+                    wobbleGoal.release();
 
                 }
                 else if (targetZone == "B"){
+
+
 
                 }
                 else{
