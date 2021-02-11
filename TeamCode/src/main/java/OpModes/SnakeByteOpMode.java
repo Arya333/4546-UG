@@ -2,6 +2,7 @@ package OpModes;
 
 import com.qualcomm.hardware.bosch.BNO055IMU;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.OpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
@@ -34,6 +35,8 @@ public abstract class SnakeByteOpMode extends OpMode{
     Acceleration gravity;
     BNO055IMU.Parameters parameters;
 
+    public RevBlinkinLedDriver blink;
+
     public void init(){
 
         motorFL = hardwareMap.dcMotor.get("motorFL");
@@ -59,6 +62,9 @@ public abstract class SnakeByteOpMode extends OpMode{
 
         srvClaw = hardwareMap.servo.get("srvClaw");
         motorPivot = hardwareMap.dcMotor.get("motorPivot");
+
+        blink = hardwareMap.get(RevBlinkinLedDriver.class, "blink");
+        blink.setPattern(RevBlinkinLedDriver.BlinkinPattern.VIOLET);
 
         motorFL.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBL.setDirection(DcMotorSimple.Direction.REVERSE);

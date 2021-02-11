@@ -1,5 +1,6 @@
 package Library;
 
+import com.qualcomm.hardware.rev.RevBlinkinLedDriver;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.DcMotorSimple;
@@ -12,6 +13,7 @@ public class Drivetrain {
     public DcMotor motorFR;
     public DcMotor motorBL;
     public DcMotor motorBR;
+    public RevBlinkinLedDriver blink;
 
     LinearOpMode opMode;
     public double countsPerInch;
@@ -24,6 +26,9 @@ public class Drivetrain {
         motorFR = this.opMode.hardwareMap.dcMotor.get("motorFR");
         motorBL = this.opMode.hardwareMap.dcMotor.get("motorBL");
         motorBR = this.opMode.hardwareMap.dcMotor.get("motorBR");
+
+        blink = this.opMode.hardwareMap.get(RevBlinkinLedDriver.class, "blink");
+        blink.setPattern(RevBlinkinLedDriver.BlinkinPattern.VIOLET);
 
         motorFL.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBL.setDirection(DcMotorSimple.Direction.REVERSE);

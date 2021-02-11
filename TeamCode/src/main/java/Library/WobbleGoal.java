@@ -60,7 +60,7 @@ public class WobbleGoal {
     }
 
     public void release(){
-        srvClaw.setPosition(.13); //placeholder number
+        srvClaw.setPosition(.1); //placeholder number
     }
 
 }
