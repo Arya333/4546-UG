@@ -8,7 +8,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
     boolean flip = false;
     int intakeState = 0; // 0 = stop, 1 = in, 2 = out
-    int shootingState = 0; // 0 = stop, 1 = high goal, 2 = inwards, 3 = power shot
+    boolean servoMoving = false;
     ElapsedTime time = new ElapsedTime();
 
     public void loop(){
@@ -96,47 +96,21 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
             stopShooter();
         }
 
-        /*if (gamepad2.x){
-            shootingState = 1;
-        }
-        else if (gamepad2.b){
-            shootingState = 2;
-        }
-        else if (gamepad2.y){
-            shootingState = 3;
-        }
-        else if (gamepad2.a){
-            shootingState = 0;
-        }
 
-        if (shootingState == 1){
-            //shootOut();
-            //motorShooter.setPower(.35); ---- High Goal
-            //motorShooter2.setPower(.383); ---- High Goal
-
-            //motorShooter.setPower(.33); ---- Power Shot
-            //motorShooter2.setPower(.37); ---- Power Shot
-
-            motorShooter.setPower(.345);
-            motorShooter2.setPower(.378);
-        }
-        else if (shootingState == 3){
-            motorShooter.setPower(.32);
-            motorShooter2.setPower(.36);
-        }
-        else if (shootingState == 2){
-            spinIn();
-        }
-        else{
-            stopShooter();
-        }*/
-
-        if (gamepad2.a){
+        if (gamepad2.a && !servoMoving){
             flickPos();
+            servoMoving = true;
+            time.reset();
         }
-        if (gamepad2.b){
+        if (time.milliseconds() >= 400 && servoMoving){
             initPos();
+            servoMoving = false;
+            time.reset();
         }
+
+        /*if (gamepad2.b){
+            initPos();
+        }*/
 
         telemetry.addData("Flip Orientation: ", flip);
         telemetry.addData("Angle: ", getGyroYaw());
