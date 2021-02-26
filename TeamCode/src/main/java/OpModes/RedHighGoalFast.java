@@ -85,19 +85,19 @@ public class RedHighGoalFast extends LinearOpMode {
 
             // ----------------------------------------------- Shoot High Goal -----------------------------------------------
 
-            sleep(1400);
+            sleep(1000);
             shooter.flickPos();
-            sleep(1400);
+            sleep(1300);
             shooter.initPos();
 
-            sleep(1600);
+            sleep(1100);
             shooter.flickPos();
-            sleep(800);
+            sleep(700);
             shooter.initPos();
 
-            sleep(1600);
+            sleep(1200);
             shooter.flickPos();
-            sleep(800);
+            sleep(700);
             shooter.initPos();
             shooter.stopShooter();
 
@@ -123,7 +123,7 @@ public class RedHighGoalFast extends LinearOpMode {
                 sleep(250);
                 drivetrain.turnPD(180, .9,.4,1000);
                 sleep(100);
-                drivetrain.moveGyro(.95, 15, 180);
+                drivetrain.moveGyro(.95, 17.9, 180);
 
                 wobbleGoal.motorPivot.setPower(0);
                 wobbleGoal.rotateTime(700,.5);
@@ -217,16 +217,14 @@ public class RedHighGoalFast extends LinearOpMode {
                     drivetrain.turnPD(0, .85, .5, 2500);
                     sleep(350);
                     drivetrain.strafeRightInches(.8, 6.5);
-                    sleep(150);
+                    sleep(200);
                     drivetrain.moveGyro(.8, 6, 0);
-                    sleep(150);
-                    drivetrain.strafeLeftInches(.8, 10);
+                    sleep(200);
+                    drivetrain.strafeLeftInches(.8, 7.35);
                     sleep(250);
                     drivetrain.turnPD(0, .86, .55, 1000);
                     sleep(200);
-                    drivetrain.moveGyro(.8, 6.4, 0);
-                    sleep(100);
-                    drivetrain.turnPD(0, .86, .55, 1000);
+                    drivetrain.moveGyro(.79, 9, 0);
                     sleep(850);
 
                     wobbleGoal.grab();
@@ -239,9 +237,9 @@ public class RedHighGoalFast extends LinearOpMode {
                     sleep(250);
                     drivetrain.turnPD(180, .86, .55, 1000);
                     sleep(200);
-                    drivetrain.strafeLeftInches(.8, 8);
+                    drivetrain.strafeLeftInches(.8, 6.25);
                     sleep(200);
-                    drivetrain.moveGyro(.95, 10.4, 180);
+                    drivetrain.moveGyro(.95, 11.3, 180);
 
                     wobbleGoal.motorPivot.setPower(0);
                     wobbleGoal.rotateTime(700,.5);
