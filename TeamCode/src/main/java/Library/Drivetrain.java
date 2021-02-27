@@ -34,9 +34,11 @@ public class Drivetrain {
         motorBL.setDirection(DcMotorSimple.Direction.REVERSE);
         motorBR.setDirection(DcMotorSimple.Direction.REVERSE);
 
-        countsPerInch = EncodersPerInch(560, .55, (75/25.4)); //change parameters
+        countsPerInch = EncodersPerInch(560, .5, (75/25.4)); //change parameters
         time = new ElapsedTime();
         sensor = new Sensors(opMode);
+
+        setDTBrake();
 
     }
 
@@ -161,6 +163,7 @@ public class Drivetrain {
 
 
     public void moveGyro(double power, double inches, double heading){
+        setDTBrake();
         resetEncoders();
         double constant = .7; //to reduce power of one side of drivetrain
         if (power > 0){

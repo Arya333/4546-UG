@@ -1,23 +1,18 @@
-package OpModes;
+package Old;
 
 import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.vuforia.PIXEL_FORMAT;
-import com.vuforia.Vuforia;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
-import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer;
-import com.qualcomm.robotcore.eventloop.opmode.Disabled;
-import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
-import java.util.List;
-import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.navigation.VuforiaLocalizer.CameraDirection;
-import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
 import org.firstinspires.ftc.robotcore.external.tfod.Recognition;
+import org.firstinspires.ftc.robotcore.external.tfod.TFObjectDetector;
+
+import java.util.List;
 
 
-@Autonomous(name = "TensorFlowTest", group = "4546")
+//@Autonomous(name = "TensorFlowTest", group = "4546")
 public class TensorFlowTest extends LinearOpMode{
 
     private static final String VUFORIA_KEY = "Aa6axCr/////AAABmVc2QsaPSkQJjpSMGsD9/ZosRWS7BswNiE9Sb9VLOcImnf5cWwR01zEMArJtnPJzhJ9tT7d/hf4NWBELaHUGmFmm/9YjcSO09DOuDcZC+gS2AGXGcYFTw4SDBryFvz8OY5jaUAWxnfXzt3uaQcNS/3ScAZsWXL6RS4WazWpYlfeLNyyp2SliGbDza3b7T8DaxHXewmwtX+uobcEv9SS4ivv12Lr14Id9q4Qa+P1ZSSxyMQZ7TUMlZtrb/L9kmMLdLYkBX+74pVTpW9Ftp18uJdvF86qy/Jt3b1t67q5JM2xTHGnF8ETgpwNFEXWOivJdxlSGhTF6p7DCO7yNXEHw+xFa2JkVhoFV9GyBseKP+BdV";

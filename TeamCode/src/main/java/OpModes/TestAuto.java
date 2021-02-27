@@ -10,7 +10,7 @@ import Library.Sensors;
 import Library.Shooter;
 import Library.WobbleGoal;
 
-@Autonomous(name = "Test Auto", group = "4546")
+@Autonomous(name = "Test Auto - Inspection", group = "4546")
 public class TestAuto extends LinearOpMode{
 
     private Drivetrain drivetrain;
