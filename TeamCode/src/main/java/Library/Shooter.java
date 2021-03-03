@@ -55,10 +55,10 @@ public class Shooter {
     }
 
     public void initPos(){
-        srvFlicker.setPosition(.65); //placeholder number
+        srvFlicker.setPosition(.7); //placeholder number
     }
 
     public void flickPos(){
-        srvFlicker.setPosition(.4); //placeholder number
+        srvFlicker.setPosition(.52); //placeholder number
     }
 }

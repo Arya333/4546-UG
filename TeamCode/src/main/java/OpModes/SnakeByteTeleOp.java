@@ -15,8 +15,6 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
         // ----------------------------------------------- Drivetrain -----------------------------------------------
 
-        // Implement macro to turn 90 degrees with one button press for turning to shoot each time <----- DO THIS
-
         double k = 1.0;
 
         if(gamepad1.right_trigger > .3){

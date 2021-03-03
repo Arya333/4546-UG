@@ -148,7 +148,7 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void intakeIn(){
-        motorIntake.setPower(1);
+        motorIntake.setPower(.95);
     }
 
     public void intakeOut(){
@@ -173,11 +173,11 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void flickPos(){
-        srvFlicker.setPosition(.45);
+        srvFlicker.setPosition(.52);
     }
 
     public void initPos(){
-        srvFlicker.setPosition(.65);
+        srvFlicker.setPosition(.73);
     }
 
     public void shootOut(){
