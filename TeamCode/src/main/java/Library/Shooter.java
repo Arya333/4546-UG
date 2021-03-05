@@ -59,6 +59,6 @@ public class Shooter {
     }
 
     public void flickPos(){
-        srvFlicker.setPosition(.52); //placeholder number
+        srvFlicker.setPosition(.49); //placeholder number
     }
 }
