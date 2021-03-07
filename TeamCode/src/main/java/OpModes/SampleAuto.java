@@ -39,7 +39,24 @@ public class SampleAuto extends LinearOpMode{
         //drivetrain.turnPD(90,.6,.5,5000); ---- Constants for 90 degree turn
         //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
 
-        drivetrain.moveGyro(-.95, 55, 0);
+        shooter.shootOutHighGoal();
+        sleep(1500);
+
+        sleep(1200);
+        shooter.flickPos();
+        sleep(2500);
+        shooter.initPos();
+
+        sleep(900);
+        shooter.flickPos();
+        sleep(1200);
+        shooter.initPos();
+
+        sleep(1000);
+        shooter.flickPos();
+        sleep(1200);
+        shooter.initPos();
+        shooter.stopShooter();
 
     }
 }
