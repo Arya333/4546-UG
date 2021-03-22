@@ -44,17 +44,17 @@ public class SampleAuto extends LinearOpMode{
 
         sleep(1200);
         shooter.flickPos();
-        sleep(2500);
+        sleep(2000);
         shooter.initPos();
 
-        sleep(900);
+        sleep(700);
         shooter.flickPos();
-        sleep(1200);
+        sleep(2000);
         shooter.initPos();
 
-        sleep(1000);
+        sleep(700);
         shooter.flickPos();
-        sleep(1200);
+        sleep(800);
         shooter.initPos();
         shooter.stopShooter();
 

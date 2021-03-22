@@ -18,7 +18,7 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
         double k = 1.0;
 
         if(gamepad1.right_trigger > .3){
-            k = 0.3;
+            k = 0.45;
         }
         else{
             k = 1.0;
@@ -82,13 +82,12 @@ public class SnakeByteTeleOp extends SnakeByteOpMode{
 
         if (gamepad2.right_trigger > .2){
             motorShooter.setPower(.355);
-            motorShooter2.setPower(.366);
-            //motorShooter.setPower(.347);
+            motorShooter2.setPower(.355);
             //motorShooter2.setPower(.366);
         }
         else if (gamepad2.left_trigger > .2){
-            motorShooter.setPower(.325);
-            motorShooter2.setPower(.345);
+            motorShooter.setPower(.324);
+            motorShooter2.setPower(.334);
         }
         else{
             stopShooter();
