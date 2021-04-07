@@ -200,11 +200,11 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void grab(){
-        srvClaw.setPosition(.59); //placeholder number
+        srvClaw.setPosition(.73); //placeholder number
     }
 
     public void release(){
-        srvClaw.setPosition(.2); //placeholder number
+        srvClaw.setPosition(.1); //placeholder number
     }
 
     // Need to add code for the wobble goal pivot motor later

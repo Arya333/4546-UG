@@ -234,9 +234,9 @@ public class Drivetrain {
             pastTime = currentTime;
             currentTime = time.milliseconds();
             double dT = currentTime - pastTime;
-            angleDiff = sensor.getTrueDiff(angle);
-            P = angleDiff * kP;
-            I += dT * angleDiff * kI;
+            angleDiff = sensor.getTrueDiff(angle); // error
+            P = angleDiff * kP; // power is proportional to error
+            I += dT * angleDiff * kI; // sum of error throughout entire duration of the turn
             changePID = P;
             changePID += I;
             opMode.telemetry.addData("PID: ", changePID);
@@ -268,7 +268,7 @@ public class Drivetrain {
             currentTime = time.milliseconds();
             double dT = currentTime - pastTime;
             angleDiff = sensor.getTrueDiff(angle);
-            changePID = (angleDiff * kP) + ((angleDiff - prevAngleDiff) / dT * kD);
+            changePID = (angleDiff * kP) + ((angleDiff - prevAngleDiff) / dT * kD); // second part is rate of change of error (derivative)
             if (changePID < 0) {
                 startMotors(changePID - .10, -changePID + .10);
             } else {
