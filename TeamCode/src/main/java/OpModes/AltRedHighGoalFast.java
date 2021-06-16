@@ -1,9 +1,8 @@
-package Old;
+package OpModes;
 
-import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.util.ElapsedTime;
-
+import com.qualcomm.robotcore.eventloop.opmode.Autonomous;
 import Library.Drivetrain;
 import Library.Intake;
 import Library.Sensors;
@@ -11,8 +10,8 @@ import Library.Shooter;
 import Library.VuforiaBitmap;
 import Library.WobbleGoal;
 
-//@Autonomous(name = "RedPowerShot", group = "4546")
-public class RedPowerShot extends LinearOpMode {
+@Autonomous(name = "AltRedHighGoalFast", group = "4546")
+public class AltRedHighGoalFast extends LinearOpMode{
 
     private Drivetrain drivetrain;
     private Sensors sensors;
@@ -38,7 +37,6 @@ public class RedPowerShot extends LinearOpMode {
         wobbleGoal.grab();
         wobbleGoal.motorPivot.setPower(-.1);
 
-        
         while (!isStarted()){
             telemetry.addData("2nd Wobble Goal? ", secondWobbleGoal);
             telemetry.update();
@@ -66,168 +64,140 @@ public class RedPowerShot extends LinearOpMode {
 
         waitForStart();
 
-        // ----------------------------------------------- Auto -----------------------------------------------
-        //drivetrain.turnPI(90,.35,.07,10000);  ---- Not using PI, too much overshoot
 
-        //drivetrain.turnPD(90,.6,.5,5000); ---- Constants for 90 degree turn
-        //drivetrain.turnPD(45, .7, .6, 5000); ---- Constants for 45 degree turn
-
-        if (!isStopRequested()){
+        if (!isStopRequested() && opModeIsActive()){
             // ----------------------------------------------- Drive to Launch Line -----------------------------------------------
-            drivetrain.moveGyro(-.8,20,0);
-            sleep(750);
-            drivetrain.strafeRightInches(.8,12.94);
-            sleep(250);
-            drivetrain.turnPD(0,.8,.7,2000);
-            drivetrain.moveGyro(-.8,31.4, 0);
-            sleep(300);
-            drivetrain.turnPD(4.68,.75,.65,2000);
-            sleep(250);
+            drivetrain.moveGyro(-.8, 74, -1.9);
+            sleep(350);
+            drivetrain.turnPD(0, 0.8, 0.7, 1000);
+            //shooter.shootOutHighGoal();
+            shooter.motorShooter.setPower(.361);
+            shooter.motorShooter2.setPower(.3645);
+            sleep(1600);
 
-
-            // ----------------------------------------------- Shoot Power Shots -----------------------------------------------
-            shooter.shootOutPowerShot();
-            sleep(1700);
+            // ----------------------------------------------- Shoot High Goal -----------------------------------------------
+            intake.intakeOutSlow();
+            sleep(250);
+            drivetrain.strafeRightInches(.8, 11);
+            sleep(200);
+            drivetrain.turnPD(0, .8, .4, 400);
+            sleep(200);
+            drivetrain.turnPD(18.35,.84, .38, 1000);
+            sleep(250);
             shooter.flickPos();
             sleep(1300);
             shooter.initPos();
 
-            drivetrain.turnPD(0,.8,.7,2000);
-            sleep(500);
-            drivetrain.strafeRightInches(.4, 3);
-            sleep(100);
-            drivetrain.turnPD(0,.8,.7,2000);
+            shooter.motorShooter.setPower(.362);
+            shooter.motorShooter2.setPower(.366);
+            sleep(1650);
             shooter.flickPos();
-            sleep(900);
+            sleep(1300);
             shooter.initPos();
 
-            drivetrain.turnPD(-6,.75,.65,2000);
-            sleep(500);
+            shooter.motorShooter.setPower(.361);
+            shooter.motorShooter2.setPower(.3645);
+            sleep(1650);
             shooter.flickPos();
-            sleep(900);
+            sleep(1300);
             shooter.initPos();
-            sleep(500);
-            drivetrain.turnPD(0,.8,.7,2000);
             shooter.stopShooter();
+            intake.intakeStop();
 
             // ----------------------------------------------- Drop Wobble Goal 1 -----------------------------------------------
             if (targetZone == "A"){
-                drivetrain.moveGyro(-.8, 10.2, 0);
+                sleep(200);
+                drivetrain.turnPD(0, .8, .4, 800);
+                sleep(200);
+                drivetrain.moveGyro(-.95, 26, 0);
                 sleep(300);
-                drivetrain.turnPD(-90,.7,.4,3000);
+                drivetrain.turnPD(-90,.84,.4,2600);
                 sleep(300);
-                drivetrain.moveGyro(.8,20.5,-90);
+                drivetrain.moveGyro(.95,28.75,-90);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(850,.45);
-                sleep(250);
+                wobbleGoal.rotateTime(600,.43);
+                sleep(150);
                 wobbleGoal.release();
+                sleep(250);
             }
             else if (targetZone == "B"){
-                drivetrain.moveGyro(-.8, 42.3, 0);
+                sleep(200);
+                drivetrain.turnPD(0, .8, .4, 800);
+                sleep(200);
+                drivetrain.moveGyro(-.95, 58.4, 0);
                 sleep(300);
-                drivetrain.turnPD(-90,.7,.4,3000);
+                drivetrain.turnPD(-90,.84,.4,2600);
                 sleep(150);
-                drivetrain.moveGyro(.7,3,-90);
-                sleep(100);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(800,.45);
-                sleep(250);
+                wobbleGoal.rotateTime(600,.43);
+                sleep(150);
                 wobbleGoal.release();
-
+                sleep(250);
             }
             else{
-                drivetrain.moveGyro(-.8, 72.5, 0);
+                sleep(200);
+                drivetrain.turnPD(0, .8, .4, 800);
+                sleep(200);
+                drivetrain.moveGyro(-.95, 80, 0);
                 sleep(300);
-                drivetrain.turnPD(-90,.7,.4,5000);
+                drivetrain.turnPD(-92.5,.84,.4,2600);
                 sleep(300);
-                drivetrain.moveGyro(.8,19,-90);
+                drivetrain.moveGyro(.95,25.8,-93.5);
 
                 wobbleGoal.motorPivot.setPower(0);
-                wobbleGoal.rotateTime(800,.45);
+                wobbleGoal.rotateTime(600,.43);
                 sleep(250);
                 wobbleGoal.release();
+                sleep(350);
             }
+
 
             // ----------------------------------------------- Park -----------------------------------------------
             if (!secondWobbleGoal){
                 if (targetZone == "A"){
-                    sleep(100);
-                    drivetrain.moveGyro(-.8,19.5,-90);
+                    sleep(150);
+                    drivetrain.moveGyro(-.95,29.5,-90);
                     sleep(200);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.25);
                     sleep(250);
-                    drivetrain.turnPD(180,.7,.4,4000);
+                    drivetrain.turnPD(180,.84,.4,2500);
                     sleep(300);
-                    drivetrain.moveGyro(-.8, 7.5,180);
+                    drivetrain.moveGyro(-.95, 16,180);
                     sleep(300);
-                    drivetrain.turnPD(180,.8,.7,3000);
+                    drivetrain.turnPD(180,.8,.5,700);
                 }
                 else if (targetZone == "B"){
-                    sleep(100);
-                    drivetrain.moveGyro(-.8,3,-90);
+                    drivetrain.moveGyro(-.95,3,-90);
                     sleep(200);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.2);
                     sleep(250);
-                    drivetrain.turnPD(180,.7,.4,4000);
+                    drivetrain.turnPD(180,.84,.4,2600);
                     sleep(300);
-                    drivetrain.moveGyro(-.8, 29.4,180);
+                    drivetrain.moveGyro(-.95, 46.5,180);
                     sleep(300);
-                    drivetrain.turnPD(180,.8,.7,3000);
+                    drivetrain.turnPD(180,.8,.4,3000);
                 }
                 else{
                     sleep(500);
-                    drivetrain.moveGyro(-.8,19.5,-90);
+                    drivetrain.moveGyro(-.95,24,-90);
                     sleep(200);
                     wobbleGoal.grab();
                     wobbleGoal.motorPivot.setPower(-.2);
                     sleep(250);
                     drivetrain.strafeRightInches(.8,5);
-                    drivetrain.turnPD(180,.7,.4,4000);
-                    sleep(300);
-                    drivetrain.moveGyro(-.8, 58,180);
-                    sleep(300);
-                    drivetrain.turnPD(180,.8,.7,3000);
-                }
-            }
-
-            // ----------------------------------------------- Drop Wobble Goal 2 -----------------------------------------------
-            else{
-                if (targetZone == "A"){
-                    drivetrain.moveGyro(-.6, 6.3, -90);
-                    drivetrain.turnPD(-45, .8, .7, 2500);
-                    sleep(300);
-                    drivetrain.moveGyro(.6, 42, -45);
-                    sleep(300);
-                    drivetrain.turnPD(0, .75,.65, 2500);
-                    drivetrain.strafeLeftInches(.6, 9);
+                    drivetrain.turnPD(180,.84,.4,2600);
                     sleep(250);
-                    drivetrain.moveGyro(.7, 34, 0);
-                    drivetrain.strafeRightInches(.6, 2);
+                    drivetrain.moveGyro(-.95, 63.5,180);
                     sleep(250);
-                    drivetrain.moveGyro(.7, 2.5, 0);
-
-                    wobbleGoal.grab();
-                    sleep(300);
-                    wobbleGoal.motorPivot.setPower(-.375);
-                    sleep(2000);
-
-
-                }
-                else if (targetZone == "B"){
-
-                }
-                else{
-
+                    drivetrain.turnPD(180,.8,.5,700);
                 }
             }
 
 
         }
-
-
     }
 }

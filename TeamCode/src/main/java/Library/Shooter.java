@@ -29,13 +29,13 @@ public class Shooter {
     }
 
     public void shootOutPowerShot(){
-        motorShooter.setPower(.325);
-        motorShooter2.setPower(.34);
+        motorShooter.setPower(.326);
+        motorShooter2.setPower(.341);
     }
 
     public void shootOutHighGoal(){
-        motorShooter.setPower(.356);
-        motorShooter2.setPower(.366);
+        motorShooter.setPower(.362);
+        motorShooter2.setPower(.368);
     }
 
     public void spinIn(){
@@ -59,6 +59,6 @@ public class Shooter {
     }
 
     public void flickPos(){
-        srvFlicker.setPosition(.49); //placeholder number
+        srvFlicker.setPosition(.53); //placeholder number
     }
 }

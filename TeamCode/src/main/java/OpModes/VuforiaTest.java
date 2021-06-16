@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 
 import Library.VuforiaBitmap;
 
-@Autonomous(name = "VuforiaBitmapTest", group = "4546")
+//@Autonomous(name = "VuforiaBitmapTest", group = "4546")
 public class VuforiaTest extends LinearOpMode{
 
     private VuforiaBitmap sample;

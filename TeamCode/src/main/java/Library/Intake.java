@@ -27,6 +27,10 @@ public class Intake {
         motorIntake.setPower(-1);
     }
 
+    public void intakeOutSlow(){
+        motorIntake.setPower(-.38);
+    }
+
     public void intakeStop(){
         motorIntake.setPower(0);
     }

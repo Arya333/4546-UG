@@ -152,7 +152,7 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void intakeOut(){
-        motorIntake.setPower(-1);
+        motorIntake.setPower(-.6);
     }
 
     public void intakeInSlow(){
@@ -160,7 +160,7 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void intakeOutSlow(){
-        motorIntake.setPower(-.7);
+        motorIntake.setPower(-.3);
     }
 
     public void intakeStop(){
@@ -171,9 +171,9 @@ public abstract class SnakeByteOpMode extends OpMode{
         srvFlicker.setPosition(.45);
         srvFlicker.setPosition(.65);
     }
-
-    public void flickPos(){
-        srvFlicker.setPosition(.48);
+//.48
+    public void flickPos(){ 
+        srvFlicker.setPosition(.54);
     }
 
     public void initPos(){
@@ -200,11 +200,11 @@ public abstract class SnakeByteOpMode extends OpMode{
     }
 
     public void grab(){
-        srvClaw.setPosition(.73); //placeholder number
+        srvClaw.setPosition(.9); //placeholder number
     }
 
     public void release(){
-        srvClaw.setPosition(.1); //placeholder number
+        srvClaw.setPosition(.4); //placeholder number
     }
 
     // Need to add code for the wobble goal pivot motor later
