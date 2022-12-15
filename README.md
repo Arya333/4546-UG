@@ -1,7 +1,18 @@
 # 4546 ViperBots SnakeByte 2020 - 2021 Ultimate Goal Software Overview
-This is the repository for 4546 ViperBots SnakeByte during the 2020 - 2021 FTC Ultimate Goal season. During the season, our team was awarded Inspire award 2nd place (best overall team) at the AML Championship and Control award finalists (best software design) at the Alamo Regional Championship. We utilized several unique algorithms and software techniques to maximize our scoring potential in the autonomous period (robot moves independently with only pre-programmed instructions) and the driver-controlled period.
+This is the repository for 4546 ViperBots SnakeByte during the 2020 - 2021 FTC Ultimate Goal season. During the season, our team was awarded Inspire award 2nd place (best overall team) at the AML Championship and Control award finalists (best software design) at the Alamo Regional Championship. We utilized several unique algorithms and software techniques to maximize our scoring potential in the autonomous period (robot moves independently with only pre-programmed instructions) and the driver-controlled period. 
 
 This <a href="https://www.youtube.com/watch?v=WXCJxsriRxU&ab_channel=SnakeByte4546" target="_blank">video</a> briefly explains all of the key software components that we implemented. 
+\
+\
+\
+We planned an autonomous pathing that would minimize the number of movements we had to make and still be compatible with alliance partners. We also wanted to score as many points as possible by targeting every objective we could finish within the 30 second limit in the autonomous period. This was our autonomous pathing:
+
+![Capture](https://user-images.githubusercontent.com/43790515/207940049-a297451d-fb55-4dc4-966d-75e8e6ec9481.PNG)
+\
+\
+\
+To detect the number of rings on the stack in the autonomous period, we created a custom Vuforia bitmap algorithm. A bitmap is a map of pixels from an image that stores RGB color values for the pixels. In our custom algorithm, we find the total number of yellow pixels to determine the starter stack height. This is essential for our autonomous because we can detect the stack height during initialization which saves a few seconds during the match. Additionally, using a bitmap through our webcam allows us to orient our robot in any direction, reducing the number of movements required to score points.
+These are the implementation steps:
 
 
 ## NOTICE
