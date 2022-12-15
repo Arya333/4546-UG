@@ -21,6 +21,13 @@ These are the implementation steps:
 
 <img src="https://user-images.githubusercontent.com/43790515/207942689-757f01cb-3066-4075-9cd4-c520769e3b50.PNG" width="900"/>
 
+<img src="https://user-images.githubusercontent.com/43790515/207943776-66ce0a3a-bc00-443a-8509-6d2e34443054.PNG" width="600"/>
+\
+\
+\
+We found that when we coded our robot to move straight, it would veer off to the left or right. Instead of assigning power values to the sides of the drivetrain and scaling the speed which each side should go, we decided to use our gyro orientation to move straight. Our “move gyro” method has a heading to follow (such as zero degrees or 90 degrees) and if our robot was off by a certain threshold (such as 2 degrees) from our desired heading, we would give one side of the drivetrain less power to turn towards the heading while also moving forward. This ensures that our robot will never get off course from our desired heading.
+
+
 
 ## NOTICE
 
