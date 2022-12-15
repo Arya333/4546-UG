@@ -54,6 +54,10 @@ For the driver-controlled period, the drivers use gamepads to control the robot.
 \
 \
 <img src="https://user-images.githubusercontent.com/43790515/207948497-fc2b6b65-afc7-4ce0-b407-c06a5faf0f13.PNG" width="900"/>
+\
+\
+\
+<a href="https://www.youtube.com/watch?v=ZwHMunYLpoo&ab_channel=VandegriftHSViperBots" target="_blank">This</a> is a match from one of our AML competitions demonstrating all of the software components explained above.
 
 <p>&nbsp;&nbsp;</p>
 
