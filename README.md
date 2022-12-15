@@ -13,6 +13,13 @@ We planned an autonomous pathing that would minimize the number of movements we 
 \
 To detect the number of rings on the stack in the autonomous period, we created a custom Vuforia bitmap algorithm. A bitmap is a map of pixels from an image that stores RGB color values for the pixels. In our custom algorithm, we find the total number of yellow pixels to determine the starter stack height. This is essential for our autonomous because we can detect the stack height during initialization which saves a few seconds during the match. Additionally, using a bitmap through our webcam allows us to orient our robot in any direction, reducing the number of movements required to score points.
 These are the implementation steps:
+* Find optimal RGB color value ranges to detect the yellow pixels of the rings using computer vision interfaces like GRIP
+* Convert regular images taken on the webcam to bitmap images (each pixel has an x & y coordinate and the RGB color values of each pixel) using Vuforia
+* Scan only the bottom half of the bitmap using the RGB threshold filter (double for loop through x & y coordinates), If a pixel’s red, green, and blue color values fall within the threshold, increment a yellow pixel count
+* Test each configuration of rings for the average pixel count. The more number of rings, the higher the average pixel count
+* Create a baseline pixel count number, so that any number higher than that corresponds to an associated stack height for each configuration
+
+<img src="https://user-images.githubusercontent.com/43790515/207942689-757f01cb-3066-4075-9cd4-c520769e3b50.PNG" width="900"/>
 
 
 ## NOTICE
