@@ -1,8 +1,8 @@
 # 4546 ViperBots SnakeByte 2020 - 2021 Ultimate Goal Software Overview
 This is the repository for 4546 ViperBots SnakeByte during the 2020 - 2021 FTC Ultimate Goal season. During the season, our team was awarded Inspire award 2nd place (best overall team) at the AML Championship and Control award finalists (best software design) at the Alamo Regional Championship. We utilized several unique algorithms and software techniques to maximize our scoring potential in the autonomous period (robot moves independently with only pre-programmed instructions) and the driver-controlled period.
 
-This <a href="https://www.google.com/" target="_blank">video</a> briefly explains all of the key software components that we implemented. 
-https://www.youtube.com/watch?v=WXCJxsriRxU&ab_channel=SnakeByte4546
+This <a href="https://www.youtube.com/watch?v=WXCJxsriRxU&ab_channel=SnakeByte4546" target="_blank">video</a> briefly explains all of the key software components that we implemented. 
+
 
 ## NOTICE
 
