@@ -22,12 +22,40 @@ These are the implementation steps:
 <img src="https://user-images.githubusercontent.com/43790515/207942689-757f01cb-3066-4075-9cd4-c520769e3b50.PNG" width="900"/>
 
 <img src="https://user-images.githubusercontent.com/43790515/207943776-66ce0a3a-bc00-443a-8509-6d2e34443054.PNG" width="600"/>
-\
-\
-\
-We found that when we coded our robot to move straight, it would veer off to the left or right. Instead of assigning power values to the sides of the drivetrain and scaling the speed which each side should go, we decided to use our gyro orientation to move straight. Our “move gyro” method has a heading to follow (such as zero degrees or 90 degrees) and if our robot was off by a certain threshold (such as 2 degrees) from our desired heading, we would give one side of the drivetrain less power to turn towards the heading while also moving forward. This ensures that our robot will never get off course from our desired heading.
 
+\
+\
+\
+We found that when we coded our robot to move straight, it would veer off to the left or right, so we incorporated gyro stabilization into the robot's movements. Instead of assigning power values to the sides of the drivetrain and scaling the speed which each side should go, we decided to use our gyro orientation to move straight. Our “move gyro” method has a heading to follow (such as zero degrees or 90 degrees) and if our robot was off by a certain threshold (such as 2 degrees) from our desired heading, we would give one side of the drivetrain less power to turn towards the heading while also moving forward. This ensures that our robot will never get off course from our desired heading.
 
+<img src="https://user-images.githubusercontent.com/43790515/207944793-ddc80596-cb16-42c9-abcd-37601c6a5bad.PNG" width="300"/>
+
+\
+\
+\
+Due to its consistency, gyro is an accurate measure that we can utilize to make near perfect movements. For our turning algorithm we implemented PID control algorithms. P stands for proportional. Error is defined as our goal angle minus our current angle. In our PD turn, as our error decreases, our power output to the motor decreases because it will be proportional to the error (P term). This ensures that we never overshoot. The derivative term (D) takes into account the rate of change of the error and eliminates sudden jerks, allowing for smoother movements and fewer oscillations. 
+<dl>
+  <dt>Error</dt>
+  <dd>the goal angle minus the current angle</dd>
+  <dt>P (Proportional)</dt>
+  <dd>scales power with error, so as our error decreases, our power for turning also decreases → ensures robot doesn’t overshoot from the goal angle</dd>
+  <dt>I (Integral)</dt>
+  <dd>constantly adds power as the duration of the turn increases, keeping a cumulative sum of all error over time → ensures that our robot completes the turn</dd>
+  <dt>D (Derivative)</dt>
+  <dd>takes into account the rate of change of the error → smooths the turn and eliminates jerky movements</dd>
+</dl>
+
+<img src="https://user-images.githubusercontent.com/43790515/207947066-b74d0560-4467-4858-9957-f0ca78a60e5d.png" width="600"/>
+
+\
+\
+\
+For the driver-controlled period, the drivers use gamepads to control the robot. These are the controls for the drivers:
+\
+\
+<img src="https://user-images.githubusercontent.com/43790515/207948497-fc2b6b65-afc7-4ce0-b407-c06a5faf0f13.PNG" width="900"/>
+
+<p>&nbsp;&nbsp;</p>
 
 ## NOTICE
 
